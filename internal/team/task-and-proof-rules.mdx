@@ -1,0 +1,30 @@
+---
+title: "Task and proof rules"
+description: "How AgentDesk tasks should be shaped, executed, and verified."
+---
+
+# Task and proof rules
+
+## Task rules
+
+- New user-requested tasks start in Inbox unless explicitly approved.
+- Move work to Ready only when the task is clear enough to execute.
+- Move active work to In Progress and keep runtime/task state aligned.
+- Use clear next actions, not vague status notes.
+- Reopen done tasks when new feedback changes the required outcome.
+
+## Proof levels
+
+| Proof level | Use for |
+| --- | --- |
+| Unit/API test | Backend logic, state contracts, validation. |
+| Browser/UI proof | User-visible UI behavior. |
+| Near-live orchestration | Autopush, runtime, selector, dispatch behavior. |
+| Live OAuth/config smoke | Auth and production-like login flows. |
+| Production cutover approval | Channel, cron, or side-effect changes. |
+
+## Artifacts and deliveries
+
+- Use artifacts for evidence and working proof.
+- Use deliveries for final user-facing outputs.
+- Do not write shared outputs into an agent's private cwd.

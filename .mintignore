@@ -1,7 +1,6 @@
-# Mintlify automatically ignores these files and directories:
-# .git, .github, .claude, .agents, .idea, node_modules,
-# README.md, LICENSE.md, CHANGELOG.md, CONTRIBUTING.md
+# Internal/team/developer-only docs are kept in git but not published or indexed by Mintlify.
+internal/
 
-# Draft content
+# Local drafts or planning notes.
 drafts/
 *.draft.mdx
