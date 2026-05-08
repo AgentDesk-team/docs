@@ -1,23 +1,42 @@
 ---
 title: "Create and review your first task"
-description: "How to ask an agent to prepare a task, move it to Ready, and review it before execution."
+description: "How to review Sample Task 000, create an FE Dev agent, move the task to Ready, and verify the output."
 ---
 
 # Create and review your first task
 
-In AgentDesk, a good task should be visible on the board, assigned to the right person or agent, and clear enough to execute.
+For onboarding, the recommended first task is **Sample Task 000**. This task helps you learn the basic AgentDesk flow: review a task, create an agent, move the task to Ready, wait for execution, open the output, and submit feedback.
 
-For onboarding, the recommended first task is **Sample Task 000**.
+## Before you start
 
-## Recommended onboarding request
+Make sure you have already:
 
-Send this to your selected agent:
+1. Initialized your workspace.
+2. Entered basic information about yourself.
+3. Opened the dashboard.
+4. Found and reviewed Sample Task 000.
+
+## Create the recommended agent
+
+For Sample Task 000, create an agent with the **FE Dev** role.
+
+This role is recommended because Task 000 is expected to produce a frontend-style form/page output.
+
+## Ask the agent to prepare the task
+
+Open the Chat Panel, select your FE Dev agent, and send:
 
 ```text
-Please assign Sample Task 000 to me and move it to Ready so I can review it before execution.
+Please assign Sample Task 000 to me and move it to Ready so it can be picked up for execution.
 ```
 
-The agent should either create the sample task or update the existing sample task so it is ready for review.
+The agent should update the task assignment and status.
+
+## What Ready means
+
+<Note>
+**Ready** means the task is clear enough and allowed to be picked up for execution. It does not mean the task is done. It means the task is now eligible for the system/agent to start work.
+</Note>
 
 ## Review before execution
 
@@ -25,12 +44,12 @@ Before the task runs, open it from the dashboard and check:
 
 | Check | What to look for |
 | --- | --- |
-| Title | Is it clear what the task is? |
+| Title | Is it clearly Sample Task 000? |
 | Status | Is it **Ready**? |
-| Owner / assignee | Is it assigned to the right user or agent? |
+| Owner / assignee | Is it assigned correctly? |
 | Summary | Does it explain the goal? |
 | Next action | Is the next action concrete? |
-| Output | Is the expected output clear? |
+| Output | Is the expected form/page output clear? |
 | Scope | Is there anything unexpected or too broad? |
 
 If the task is unclear, ask the agent to fix it before continuing.
@@ -39,21 +58,22 @@ If the task is unclear, ask the agent to fix it before continuing.
 
 After review, let the agent complete the task. Watch the status:
 
-- **Ready** means queued for work.
+- **Ready** means queued/eligible for work.
 - **In progress / Active** means an agent is working.
 - **Waiting** means the agent needs your input.
 - **Blocked** means something prevents safe progress.
 - **Done** means the output should be ready to review.
 
-## Review the output
+## Open the output and give feedback
 
 When the task is Done:
 
 1. Open **Workspace Management → Files** or **Delivery Files**.
-2. Find the Task 000 output.
-3. Open or publish the output link.
-4. Review the form/page in the browser.
-5. Submit feedback.
+2. Find the Task 000 form output.
+3. Use **Public** or the equivalent share action if needed.
+4. Open the public link in the browser.
+5. Review the completed form output.
+6. Submit feedback, or report an issue/bug for the AgentDesk developer team if something is broken.
 
 ## For real tasks after onboarding
 
