@@ -1,45 +1,74 @@
 ---
-title: "Create your first task"
-description: "How to turn a request into a clear AgentDesk task."
+title: "Create and review your first task"
+description: "How to ask an agent to prepare a task, move it to Ready, and review it before execution."
 ---
 
-# Create your first task
+# Create and review your first task
 
-You can create work from the chat panel or through the dashboard. The recommended path is to start in chat with the agent who should help shape the task.
+In AgentDesk, a good task should be visible on the board, assigned to the right person or agent, and clear enough to execute.
 
-## Good task request example
+For onboarding, the recommended first task is **Sample Task 000**.
+
+## Recommended onboarding request
+
+Send this to your selected agent:
 
 ```text
-Goal: Create a user onboarding guide for AgentDesk.
-Output: A published documentation page plus source files.
-Context: It should help a first-time user understand workspace, board, chat, agents, and delivery files.
-Constraints: Keep it user-friendly; do not include internal runtime details.
-Done means: The docs render correctly and are attached to a dashboard task.
+Please assign Sample Task 000 to me and move it to Ready so I can review it before execution.
 ```
 
-## What happens next
+The agent should either create the sample task or update the existing sample task so it is ready for review.
 
-1. The agent may ask clarifying questions.
-2. The request can become a normal dashboard task.
-3. New user-requested tasks usually start in **Inbox** unless you explicitly approve execution.
-4. When ready, the task can move to execution and be assigned to an agent.
-5. Progress, blockers, and outputs should appear on the board and in linked files.
+## Review before execution
 
-## Task states you will see
+Before the task runs, open it from the dashboard and check:
 
-| State | Meaning |
+| Check | What to look for |
 | --- | --- |
-| **Inbox** | Captured, but not approved or clear enough to execute. |
-| **Ready** | Clear enough to execute when an agent is available. |
-| **In progress / Active** | An agent is currently working on it. |
-| **Waiting** | The system needs your input or an external decision. |
-| **Blocked** | Work cannot safely continue. |
-| **Done** | Work reached the agreed completion boundary with evidence/output. |
-| **Archived** | Closed historical task, not active work. |
+| Title | Is it clear what the task is? |
+| Status | Is it **Ready**? |
+| Owner / assignee | Is it assigned to the right user or agent? |
+| Summary | Does it explain the goal? |
+| Next action | Is the next action concrete? |
+| Output | Is the expected output clear? |
+| Scope | Is there anything unexpected or too broad? |
 
-## Tips
+If the task is unclear, ask the agent to fix it before continuing.
 
-- Prefer one clear outcome per task.
-- Ask for evidence or a delivery file when the output matters.
-- If a task becomes too large, ask the agent to split it into subtasks.
-- Do not mark work done only because code or text was written; verify the result.
+## Wait for completion
+
+After review, let the agent complete the task. Watch the status:
+
+- **Ready** means queued for work.
+- **In progress / Active** means an agent is working.
+- **Waiting** means the agent needs your input.
+- **Blocked** means something prevents safe progress.
+- **Done** means the output should be ready to review.
+
+## Review the output
+
+When the task is Done:
+
+1. Open **Workspace Management → Files** or **Delivery Files**.
+2. Find the Task 000 output.
+3. Open or publish the output link.
+4. Review the form/page in the browser.
+5. Submit feedback.
+
+## For real tasks after onboarding
+
+Use this format:
+
+```text
+Goal: What are we trying to achieve?
+Output: What should be produced?
+Context: What should the agent know?
+Constraints: What should not happen?
+Done means: How will we know this succeeded?
+```
+
+## Important rule
+
+<Warning>
+A chat reply is not enough to consider a task done. Always check the task state and output/evidence on the dashboard or in workspace files.
+</Warning>
