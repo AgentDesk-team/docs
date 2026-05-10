@@ -7,75 +7,37 @@ description: "Turn a request into a clear AgentDesk task, assign it to the right
 
 Use this guide after you understand the basic onboarding flow in [Getting started](/user-guide/getting-started). This page focuses on creating a real task that an agent can execute and you can review with confidence.
 
-## What a good first task should include
-
-A good task is clear enough for an agent to act on without guessing.
-
-At minimum, include:
-
-- **Goal** — what outcome you want.
-- **Context** — why this matters and what the agent should know.
-- **Expected output** — what file, UI change, report, docs page, proof, or decision you expect.
-- **Acceptance criteria** — what must be true before you accept the work.
-- **Verification** — how the agent should prove it works.
-
-<Note>
-For a deeper template, see [Write clear tasks for agents](/user-guide/task-writing-best-practices).
-</Note>
-
-## Example task request
-
-```text
-Create a User Guide page that explains how to bind an AgentDesk agent to a Telegram bot.
-
-Goal:
-Users should understand the Telegram bind flow without asking the team.
-
-Context:
-TASK-073 added Telegram binding from the Chat Panel.
-
-Scope:
-- Explain prerequisites.
-- Explain bind steps.
-- Explain test connection.
-- Explain limitations and error states.
-- Add the page to docs navigation.
-
-Out of scope:
-- Do not change product code.
-- Do not describe unimplemented multi-user routing as available.
-
-Expected output:
-A new docs page in the public AgentDesk docs repo.
-
-Acceptance criteria:
-- Page appears in User Guide navigation.
-- docs.json remains valid.
-- Commit hash and expected public URL are provided.
-
-Verification:
-Validate docs.json and run mint validate if available.
-```
-
-## Create the task
+## Start with a real request
 
 In the current AgentDesk product, create tasks through chat with an agent. Direct task creation from the board is not the supported user flow yet.
 
-Prefer using the **Agent Product Owner** for task creation and task shaping. The Product Owner agent is best suited to turn a messy request into clear scope, acceptance criteria, and next actions before execution.
+Prefer using the **Agent Product Owner** for task creation and task shaping. You do not need to define every detail yourself upfront.
 
-Send a request like:
-
-```text
-Create a task for this request and keep it in inbox until I approve it.
-```
-
-If the request is already approved for execution, say that explicitly:
+Start with a practical request like:
 
 ```text
-Create a task for this request, assign it to the right agent, and move it to Ready.
+Tạo một task cho việc abc xyz.
 ```
 
-After the agent creates the task, open Task Detail and check that it has:
+Then continue the conversation with the Agent Product Owner. The agent can help analyze the request, ask clarifying questions, define the scope, design the approach, and create a detailed plan for the task.
+
+For example:
+
+```text
+Em phân tích giúp anh task này cần làm những gì, đặc tả rõ scope/out-of-scope, acceptance criteria, verification, rồi để inbox cho anh review.
+```
+
+or:
+
+```text
+Task này anh muốn làm luôn. Em đặc tả ngắn gọn, chọn agent phù hợp, rồi đề xuất move Ready cho anh xác nhận.
+```
+
+<Note>
+See [What a best-practice task looks like](/user-guide/task-writing-best-practices) for what the task should look like after the Product Owner agent finishes clarifying and defining it.
+</Note>
+
+After the agent creates or drafts the task, open Task Detail and check that it has:
 
 | Field | What to check |
 | --- | --- |
@@ -201,8 +163,8 @@ Before assigning a task:
 ## Next steps
 
 <CardGroup cols={2}>
-  <Card title="Write clear tasks for agents" icon="list-check" href="/user-guide/task-writing-best-practices">
-    Use a detailed template for high-quality agent tasks.
+  <Card title="What a best-practice task looks like" icon="list-check" href="/user-guide/task-writing-best-practices">
+    See the final shape of a well-defined task after the Product Owner agent clarifies it with you.
   </Card>
   <Card title="Dashboard board" icon="table-columns" href="/user-guide/dashboard-board">
     Learn how to track status, blockers, next actions, and review state.

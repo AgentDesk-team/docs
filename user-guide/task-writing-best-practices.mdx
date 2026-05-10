@@ -1,254 +1,230 @@
 ---
-title: "Write clear tasks for agents"
-description: "Best practices for creating AgentDesk tasks that agents can execute and deliver correctly."
+title: "What a best-practice task looks like"
+description: "See what a well-defined AgentDesk task should look like after you work with an Agent Product Owner to clarify it."
 ---
 
-# Write clear tasks for agents
+# What a best-practice task looks like
 
-A good AgentDesk task gives the agent enough context to make progress without guessing, while staying small enough to verify.
+You do not need to write a perfect task brief by yourself.
 
-Use this guide when you ask an agent to create a task from chat or when you refine a follow-up request.
+In AgentDesk, the recommended flow is to start with a rough request, then work with an **Agent Product Owner** to analyze, clarify, define, and plan the task before execution.
 
-<Note>
-In the current AgentDesk product, task creation is supported through chat with an agent. Prefer the **Agent Product Owner** when you want to turn a request into a clear task.
-</Note>
+The goal of this page is to show what a task should look like **after** that conversation is complete.
 
-## Quick rule
+## The user does not need to know everything upfront
 
-A good task answers five questions:
-
-1. **What outcome do you want?**
-2. **Why does it matter?**
-3. **What is in scope and out of scope?**
-4. **What should the final output look like?**
-5. **How will you verify it is done?**
-
-If one of these is missing, the agent may still work, but the output is more likely to be incomplete, overbuilt, or hard to review.
-
-## Recommended task format
-
-Use this structure:
+A rough request is enough to start:
 
 ```text
-Title:
-Short action-oriented name.
-
-Goal:
-What user/business outcome should change?
-
-Context:
-Why are we doing this? What prior decision, file, customer issue, or task does it relate to?
-
-Scope:
-What should the agent do?
-
-Out of scope:
-What should the agent not touch?
-
-Inputs / references:
-Links, files, examples, screenshots, prior task ids, user quotes, APIs, docs.
-
-Expected output:
-What artifact should be delivered? Examples: UI change, spec, PR, screenshot proof, CSV, report, docs page.
-
-Acceptance criteria:
-Bullet list of observable pass/fail checks.
-
-Verification required:
-How should the agent prove it works? Examples: Playwright UI E2E, unit tests, screenshot, build, lint, manual live check.
-
-Owner / reviewer:
-Who should review or approve?
+Tạo một task cho việc cải thiện onboarding flow cho user mới.
 ```
 
-## Good example
+The Agent Product Owner should help turn that into:
+
+- a clear goal,
+- scope and out-of-scope,
+- assumptions and open questions,
+- expected output,
+- acceptance criteria,
+- verification plan,
+- suggested executor/owner,
+- next action.
+
+<Note>
+Your job is to provide business context, priorities, examples, and decisions. The Agent Product Owner's job is to shape that into executable work.
+</Note>
+
+## What a best-practice task contains
+
+A well-defined task usually has these parts:
+
+| Section | What it answers |
+| --- | --- |
+| **Title** | What is this task about? |
+| **Goal** | What user/business outcome should change? |
+| **Context** | Why are we doing this now? What prior task, issue, user feedback, or decision matters? |
+| **Scope** | What should be included? |
+| **Out of scope** | What should not be touched in this task? |
+| **Expected output** | What should be delivered? UI change, docs page, report, API, proof pack, etc. |
+| **Acceptance criteria** | How will we know the task is good enough? |
+| **Verification plan** | What proof is required before marking it done? |
+| **Owner / executor** | Who should do the work? |
+| **Next action** | What is the next concrete step? |
+
+## Example: from rough request to clear task
+
+### User starts with
+
+```text
+Tạo một task cho việc abc xyz.
+```
+
+This is okay as a starting point. The Agent Product Owner should not expect the user to provide a full spec immediately.
+
+### Agent Product Owner asks clarifying questions
+
+Good questions are specific and decision-oriented:
+
+```text
+Em sẽ tạo task cho việc abc xyz. Trước khi đưa vào execution, em cần chốt vài điểm:
+
+1. Mục tiêu user/business của abc xyz là gì?
+2. Output cuối cùng anh muốn thấy là gì: UI, docs, report, automation, hay test proof?
+3. Có phần nào chắc chắn không thuộc scope không?
+4. Ai là người review/approve?
+5. Cần proof kiểu nào: screenshot, Playwright UI E2E, test, build, hay live verification?
+```
+
+### User gives context
+
+```text
+Mục tiêu là giúp user mới hiểu cách tạo task cho Agent rõ hơn.
+Output là docs User Guide.
+Không cần đổi product code.
+Proof là publish lên docs.agentdesk.team và có commit hash.
+```
+
+### Agent Product Owner turns it into a defined task
 
 ```text
 Title:
-Add Telegram bot binding guide to User Guide docs.
+Add User Guide page for creating clear AgentDesk tasks.
 
 Goal:
-Users should understand how to connect an AgentDesk agent to a Telegram bot and what limitations exist.
+Help new users understand how to work with an Agent Product Owner to turn a rough request into a clear, executable task.
 
 Context:
-TASK-073 implemented Telegram bot binding from the Chat Panel. The internal delivery guide exists, but public docs need a User Guide page on docs.agentdesk.team.
+Current docs mention task creation, but users may think they must define every detail themselves. In the current product, tasks are created through chat with an agent, preferably the Agent Product Owner.
 
 Scope:
-- Add a Mintlify MDX page under User Guide.
-- Explain prerequisites, bind steps, test connection, chat-through-Telegram flow, limitations, and error states.
-- Add the page to docs navigation.
-- Publish to the canonical docs repo.
+- Explain that users can start with a rough request.
+- Explain how to collaborate with Agent Product Owner to clarify the task.
+- Show what a well-defined task looks like after clarification.
+- Add examples and review checklist.
+- Publish to AgentDesk public docs.
 
 Out of scope:
+- Do not document direct board task creation as supported.
 - Do not change product code.
-- Do not document unimplemented multi-user routing as available.
-
-Inputs / references:
-- TASK-073 spec and implementation notes.
-- Nam's confirmation about current Telegram session behavior.
-- Canonical docs repo: AgentDesk-team/docs.
+- Do not require users to write full specs themselves.
 
 Expected output:
-- New docs page: user-guide/telegram-bind.mdx.
-- Updated docs.json navigation.
-- Commit pushed to main.
+A User Guide docs page in the public AgentDesk docs site.
 
 Acceptance criteria:
-- Page appears in User Guide navigation.
-- Content distinguishes implemented behavior from limitations.
-- Bot token/security notes are included.
-- docs.json remains valid JSON.
+- Page clearly recommends Agent Product Owner for task shaping.
+- Page shows before/after examples.
+- Page describes the final shape of a good task.
+- Navigation includes the page.
+- docs.json remains valid.
 
-Verification required:
+Verification plan:
 - Validate docs.json.
-- Run mint validate if CLI is available.
+- Run Mintlify validation if available.
+- Push to the canonical docs repo.
 - Provide commit hash and expected public URL.
+
+Owner / executor:
+Docs/Product agent.
+
+Next action:
+Draft the docs page, update navigation, validate, commit, and push.
 ```
 
-## Weak example
+## How to interact with the Agent Product Owner
+
+Use normal language. You can be rough at first.
+
+Good starting prompts:
 
 ```text
-Make Telegram docs better.
+Tạo một task cho việc abc xyz.
 ```
-
-This is weak because it does not say:
-
-- which docs,
-- what audience,
-- what content is missing,
-- what should be published,
-- what proof is needed.
-
-## Make the task small enough to finish
-
-Prefer one deliverable per task.
-
-Good:
-
-- "Write the User Guide page for Telegram bind."
-- "Add workspace setting for Telegram user ID."
-- "Verify Telegram bind live with one test bot and screenshot proof."
-
-Risky:
-
-- "Finish Telegram integration."
-- "Make AgentDesk ready for Telegram users."
-
-Large tasks hide missing requirements. Split them into smaller tasks with clear proof.
-
-## Be explicit about verification
-
-Agents should not mark important work done just because code was written.
-
-Use concrete proof requirements:
-
-- **UI work**: browser-based E2E test and screenshot proof.
-- **Backend/API work**: unit/integration tests plus request/response examples.
-- **Docs work**: published page path, nav entry, commit hash, and validation result.
-- **Data/report work**: source files, method, output file, and review notes.
-- **Live system work**: exact environment, account/profile used, timestamp, and observed result.
-
-<Note>
-For user-facing Dashboard behavior, prefer visible UI proof over DOM-only, API-only, or log-only proof.
-</Note>
-
-## Include boundaries
-
-Clear boundaries prevent accidental scope creep.
-
-Examples:
-
-- "Do not change authentication."
-- "Do not restart the gateway without approval."
-- "Do not send external messages; dry-run only."
-- "Do not mark PASS unless Playwright screenshot exists."
-- "Do not reopen TASK-006 unless the regression is proven inside TASK-006 scope."
-
-## Include exact identifiers
-
-Use exact identifiers when they exist:
-
-- Task id: `TASK-073`
-- Subtask id: `SUB-7304`
-- File path: `user-guide/telegram-bind.mdx`
-- URL: `https://docs.agentdesk.team/user-guide/telegram-bind`
-- Agent: `Nam`
-- Workspace: `huy`
-
-Exact identifiers reduce ambiguity and make handoff easier.
-
-## Say what success looks like
-
-A strong acceptance criterion is observable.
-
-Weak:
 
 ```text
-The page is good.
+Em phân tích giúp anh việc này, viết spec/task rõ rồi để inbox cho anh review.
 ```
-
-Strong:
 
 ```text
-The User Guide page explains prerequisites, bind steps, error states, limitations, and the expected public URL; docs.json is valid; commit hash is provided.
+Anh muốn làm feature này, em hỏi lại những điểm cần chốt rồi tạo task cho team làm.
 ```
-
-## When requirements are uncertain
-
-If you are not sure yet, ask the agent for analysis/spec first instead of implementation.
-
-Example:
 
 ```text
-Analyze options for adding workspace-level Telegram user ID setup. Write a short spec with recommended UX, API changes, risks, and acceptance criteria. Do not implement until approved.
+Tạo task cho bug này. Đừng assign dev ngay; phân tích nguyên nhân/scope trước.
 ```
-
-This keeps unclear work out of execution.
-
-## Task creation checklist
-
-Before assigning a task, check:
-
-- [ ] Title starts with an action.
-- [ ] Goal is user/business outcome, not only technical activity.
-- [ ] Scope and out-of-scope are clear.
-- [ ] Inputs/references are attached or linked.
-- [ ] Expected output is named.
-- [ ] Acceptance criteria are testable.
-- [ ] Verification method is explicit.
-- [ ] Owner/reviewer is known.
-- [ ] Task is small enough to complete and verify.
-
-## Template to copy
 
 ```text
-Title:
-
-Goal:
-
-Context:
-
-Scope:
--
--
--
-
-Out of scope:
--
--
-
-Inputs / references:
--
--
-
-Expected output:
-
-Acceptance criteria:
--
--
--
-
-Verification required:
-
-Owner / reviewer:
+Tạo task này và nếu em thấy đủ rõ thì đề xuất agent phù hợp để làm.
 ```
+
+## What the Agent Product Owner should do
+
+A good Agent Product Owner should:
+
+- restate the goal in plain language,
+- identify missing decisions,
+- ask only questions that change execution quality,
+- define scope and out-of-scope,
+- suggest acceptance criteria,
+- suggest verification proof,
+- keep the task in **Inbox** until approved,
+- recommend the right executor,
+- warn if the task is too broad or risky.
+
+<Warning>
+If the request is vague, the agent should not silently invent important requirements and move it straight to execution. It should clarify or create a draft task/spec for review.
+</Warning>
+
+## What the user should review before approving
+
+Before you tell the agent to move a task to Ready, check:
+
+- Does the title match what you asked for?
+- Does the goal describe the user/business outcome?
+- Is scope clear enough?
+- Is out-of-scope stated?
+- Is the expected output concrete?
+- Are acceptance criteria testable?
+- Is verification/proof explicit?
+- Is the recommended executor correct?
+- Is the next action specific?
+
+If something is missing, ask the Agent Product Owner to refine it.
+
+## Good approval prompts
+
+When the task looks good:
+
+```text
+Ok, move task này sang Ready và assign cho Nam làm nhé.
+```
+
+```text
+Spec ổn rồi. Assign cho Duy, yêu cầu Playwright screenshot proof trước khi mark done.
+```
+
+```text
+Giữ task này ở inbox, anh cần review thêm scope sau.
+```
+
+## Signs a task is not ready yet
+
+Keep the task in Inbox if:
+
+- the outcome is unclear,
+- the task mixes too many unrelated things,
+- expected output is not defined,
+- acceptance criteria are subjective,
+- no verification method is named,
+- the executor is unclear,
+- the work may affect security, auth, public docs, external messages, billing, or user data without review.
+
+## Final mental model
+
+You provide intent and decisions.
+
+The Agent Product Owner turns that intent into a clear task.
+
+The executor agent delivers the task.
+
+You review the output and proof before closing it.
