@@ -1,0 +1,129 @@
+---
+title: "Telegram bot binding"
+description: "Connect an AgentDesk agent to a Telegram bot and use Telegram as a chat channel."
+---
+
+# Telegram bot binding
+
+Telegram binding lets you connect one AgentDesk agent to one Telegram bot from the Dashboard Chat Panel.
+
+After binding, AgentDesk can show the agent's Telegram connection state, validate the bot token, switch the Chat Panel to a Telegram-linked session when possible, and route Telegram messages for that bot to the bound agent.
+
+## Before you start
+
+You need:
+
+- A Telegram bot token from BotFather.
+- Permission to manage the workspace or the agent.
+- For full direct-message session linking, the workspace Telegram allowlist should contain the Telegram user ID that will DM the bot.
+
+<Warning>
+Workspace-level Telegram user ID setup is not yet a first-class UI step. If `channels.telegram.allowFrom` has exactly one user ID, AgentDesk can compute the real runtime Telegram session key automatically. If it is missing or has multiple users, AgentDesk falls back to a generic Telegram DM session key and may not auto-switch to the exact live Telegram DM lane.
+</Warning>
+
+## Bind an agent to Telegram
+
+1. Open the AgentDesk Dashboard.
+2. In the Chat Panel, select the agent you want to bind.
+3. Click the Telegram status chip in the Chat Panel header.
+   - It may show `Telegram · Not connected`, `Telegram · @botname`, or `Telegram · Error`.
+4. In the Telegram Bot dialog, paste the bot token.
+5. Click **Connect Telegram**.
+6. Confirm the bind action.
+7. Wait for token validation.
+
+If successful, the dialog shows:
+
+- the connected bot username,
+- an **Open Telegram** link when the bot username is available,
+- a success message that the Chat Panel switched to the shared Telegram session.
+
+The raw bot token is not shown again after save.
+
+## Test the connection
+
+After an agent is connected:
+
+1. Open the Telegram Bot dialog again.
+2. Click **Test connection**.
+
+The current test checks the saved binding and bot identity. Token validation uses Telegram `getMe`; it does not send a Telegram message by itself.
+
+## Chat through Telegram
+
+Expected user flow:
+
+1. Bind the Telegram bot to the agent.
+2. Open the bot in Telegram using the displayed bot username or deep link.
+3. Send a message to the bot from the allowed Telegram user.
+4. OpenClaw routes that Telegram message to the bound AgentDesk agent.
+5. The agent reply is sent back through the Telegram bot.
+
+When the workspace has exactly one configured Telegram `allowFrom` user, the Dashboard can build the runtime session key in this format:
+
+```text
+agent:<agent_id>:telegram:<account_id>:direct:<telegram_user_id>
+```
+
+This lets the Chat Panel auto-switch to the same Telegram-linked session used by live Telegram inbound messages.
+
+If the workspace does not have one clear Telegram user ID, the Dashboard falls back to:
+
+```text
+agent:<agent_id>:telegram:dm:<account_id>
+```
+
+That fallback still records the binding, but it may not be the exact same lane as the live Telegram DM session.
+
+## What is implemented now
+
+Implemented behavior:
+
+- Chat Panel Telegram status chip.
+- Bind dialog from Chat Panel.
+- Bot token validation through Telegram `getMe`.
+- One bot cannot be bound to multiple AgentDesk agents/workspaces.
+- Binding state is stored server-side and exposed as redacted public metadata.
+- Agent roster/contact metadata updates after bind.
+- OpenClaw profile Telegram account/binding config updates after bind.
+- Chat Panel refreshes and can auto-switch to the Telegram-linked session.
+- If `allowFrom` has exactly one Telegram user ID, linked session key uses the real OpenClaw runtime Telegram direct-session format.
+- Unbind endpoint and UI button exist, even though unbind/rotate was originally outside the first MVP scope.
+
+Current limitations:
+
+- Workspace settings UI does not yet provide a first-class field for the user to enter their Telegram user ID.
+- Multi-user Telegram bot routing is not fully generic. One workspace user / one `allowFrom` user is the supported happy path.
+- `getMe` validation proves the token and bot identity; it does not prove a full inbound/outbound Telegram conversation by itself.
+- If the Dashboard process is serving old code, reload or restart may be needed before new bind/session behavior appears.
+
+## Error states
+
+You may see these errors:
+
+- **Invalid token format** — the token does not match Telegram bot token format.
+- **Telegram rejected this bot token** — Telegram `getMe` rejected the token.
+- **Telegram provider unavailable** — AgentDesk could not reach Telegram during validation.
+- **Bot already bound** — the Telegram bot is already connected to another AgentDesk agent/workspace.
+- **Agent not found** — the selected agent does not exist or is disabled.
+- **No connected Telegram binding** — test was attempted before a successful bind.
+
+## Security notes
+
+- Bot token is accepted through a password field.
+- The raw token is not returned by read APIs.
+- Public binding metadata contains bot identity, status, account ID, deep link, and linked session key only.
+- The saved token is written into the OpenClaw profile Telegram account config so the Telegram provider can use it.
+- Binding changes are logged/audited without exposing the raw token.
+
+## Recommended next setup improvement
+
+Add a workspace setup step for Telegram user ID:
+
+1. User opens Workspace Settings.
+2. User enters their Telegram user ID.
+3. AgentDesk saves it as workspace Telegram identity.
+4. AgentDesk syncs it into `channels.telegram.allowFrom`.
+5. Telegram bind can always compute the exact direct session key for that workspace user.
+
+This removes the need for manual JSON config edits in the one-workspace-user happy path.
