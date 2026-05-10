@@ -13,6 +13,7 @@ After binding, AgentDesk can show the agent's Telegram connection state, validat
 
 You need:
 
+- A Telegram account.
 - A Telegram bot token from BotFather.
 - Permission to manage the workspace or the agent.
 - For full direct-message session linking, the workspace Telegram allowlist should contain the Telegram user ID that will DM the bot.
@@ -20,6 +21,50 @@ You need:
 <Warning>
 Workspace-level Telegram user ID setup is not yet a first-class UI step. If `channels.telegram.allowFrom` has exactly one user ID, AgentDesk can compute the real runtime Telegram session key automatically. If it is missing or has multiple users, AgentDesk falls back to a generic Telegram DM session key and may not auto-switch to the exact live Telegram DM lane.
 </Warning>
+
+## Create a Telegram bot and get the token
+
+Telegram bots are created through Telegram's official **BotFather** account.
+
+1. Open Telegram.
+2. Search for `@BotFather`.
+3. Open the verified BotFather chat.
+4. Send:
+
+   ```text
+   /newbot
+   ```
+
+5. BotFather asks for a display name. Enter a human-readable name, for example:
+
+   ```text
+   AgentDesk Support Bot
+   ```
+
+6. BotFather asks for a username. Enter a unique username that ends with `bot`, for example:
+
+   ```text
+   agentdesk_support_bot
+   ```
+
+7. After the bot is created, BotFather returns a bot token. It looks similar to:
+
+   ```text
+   1234567890:AAExampleTokenValueDoNotUse
+   ```
+
+8. Copy the token. You will paste it into AgentDesk when binding the agent.
+
+<Warning>
+Treat the bot token like a password. Do not post it in chat, screenshots, tickets, docs, or logs. Anyone with the token can control the bot until the token is revoked or rotated in BotFather.
+</Warning>
+
+Optional BotFather commands:
+
+- `/mybots` — view and manage your bots.
+- `/setdescription` — set the bot description shown in Telegram.
+- `/setuserpic` — set the bot avatar.
+- `/revoke` — revoke the current token and generate a new one if the token is exposed.
 
 ## Bind an agent to Telegram
 
