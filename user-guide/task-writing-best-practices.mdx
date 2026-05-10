@@ -16,7 +16,7 @@ The goal of this page is to show what a task should look like **after** that con
 A rough request is enough to start:
 
 ```text
-Tạo một task cho việc cải thiện onboarding flow cho user mới.
+Create a task for improving the new-user onboarding flow.
 ```
 
 The Agent Product Owner should help turn that into:
@@ -56,7 +56,7 @@ A well-defined task usually has these parts:
 ### User starts with
 
 ```text
-Tạo một task cho việc abc xyz.
+Create a task for improving the new-user onboarding flow.
 ```
 
 This is okay as a starting point. The Agent Product Owner should not expect the user to provide a full spec immediately.
@@ -66,22 +66,22 @@ This is okay as a starting point. The Agent Product Owner should not expect the 
 Good questions are specific and decision-oriented:
 
 ```text
-Em sẽ tạo task cho việc abc xyz. Trước khi đưa vào execution, em cần chốt vài điểm:
+I can create a task for improving the new-user onboarding flow. Before it is ready for execution, I need to clarify a few points:
 
-1. Mục tiêu user/business của abc xyz là gì?
-2. Output cuối cùng anh muốn thấy là gì: UI, docs, report, automation, hay test proof?
-3. Có phần nào chắc chắn không thuộc scope không?
-4. Ai là người review/approve?
-5. Cần proof kiểu nào: screenshot, Playwright UI E2E, test, build, hay live verification?
+1. What user or business outcome should this improve?
+2. What final output do you expect: UI change, docs, report, automation, or test proof?
+3. Is anything clearly out of scope?
+4. Who should review or approve the result?
+5. What proof is required: screenshot, Playwright UI E2E, test, build, or live verification?
 ```
 
 ### User gives context
 
 ```text
-Mục tiêu là giúp user mới hiểu cách tạo task cho Agent rõ hơn.
-Output là docs User Guide.
-Không cần đổi product code.
-Proof là publish lên docs.agentdesk.team và có commit hash.
+The goal is to help new users understand how to create clearer tasks for agents.
+The output should be a User Guide docs page.
+No product code changes are needed.
+Proof should be the published page on docs.agentdesk.team plus a commit hash.
 ```
 
 ### Agent Product Owner turns it into a defined task
@@ -138,23 +138,23 @@ Use normal language. You can be rough at first.
 Good starting prompts:
 
 ```text
-Tạo một task cho việc abc xyz.
+Create a task for improving the new-user onboarding flow.
 ```
 
 ```text
-Em phân tích giúp anh việc này, viết spec/task rõ rồi để inbox cho anh review.
+Please analyze this request, write a clear spec/task, and keep it in Inbox for my review.
 ```
 
 ```text
-Anh muốn làm feature này, em hỏi lại những điểm cần chốt rồi tạo task cho team làm.
+I want to build this feature. Ask me the key questions needed to define it, then create a task for the team.
 ```
 
 ```text
-Tạo task cho bug này. Đừng assign dev ngay; phân tích nguyên nhân/scope trước.
+Create a task for this bug. Do not assign it to engineering yet; analyze the cause and scope first.
 ```
 
 ```text
-Tạo task này và nếu em thấy đủ rõ thì đề xuất agent phù hợp để làm.
+Create this task and, if it is clear enough, recommend the right agent to execute it.
 ```
 
 ## What the Agent Product Owner should do
@@ -196,15 +196,15 @@ If something is missing, ask the Agent Product Owner to refine it.
 When the task looks good:
 
 ```text
-Ok, move task này sang Ready và assign cho Nam làm nhé.
+Looks good. Move this task to Ready and assign it to Nam.
 ```
 
 ```text
-Spec ổn rồi. Assign cho Duy, yêu cầu Playwright screenshot proof trước khi mark done.
+The spec looks good. Assign it to Duy and require Playwright screenshot proof before marking it done.
 ```
 
 ```text
-Giữ task này ở inbox, anh cần review thêm scope sau.
+Keep this task in Inbox. I need to review the scope further.
 ```
 
 ## Signs a task is not ready yet
