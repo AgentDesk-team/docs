@@ -1,35 +1,48 @@
 ---
 title: "Getting started"
-description: "A step-by-step first-run guide for using AgentDesk."
+description: "A first-run orientation for using AgentDesk safely and understanding the main workspace areas."
 ---
 
 # Getting started with AgentDesk
 
-This guide walks through the recommended first-run flow for using AgentDesk. By the end, you should understand how to initialize your workspace, introduce yourself, open the dashboard, review the sample task, create an agent, move the task to Ready, wait for completion, open the output, and submit feedback or report an issue.
+This guide gives you the shortest path to understand AgentDesk: initialize your workspace, learn the dashboard layout, talk to an agent, and review outputs safely.
 
-## What you will do
+If you already know the basics and want to create executable work, go to [Create and review your first task](/user-guide/first-task).
+
+## What AgentDesk is
+
+AgentDesk is a workspace for working with AI agents.
+
+It combines:
+
+- a task board,
+- a persistent chat panel,
+- agent management,
+- workspace files and delivery outputs,
+- evidence and review workflows.
+
+The goal is not just to chat. The goal is to turn work into clear tasks, let the right agent execute them, and review the output with proof.
+
+## First-run flow
 
 <Steps>
   <Step title="Initialize your workspace">
     Create your private AgentDesk workspace so your tasks, agents, files, and outputs are isolated from other users.
   </Step>
   <Step title="Introduce yourself">
-    Enter basic information about yourself so AgentDesk and your agents have enough context to support you.
+    Add basic profile/context so agents know who they are helping and how to communicate.
   </Step>
-  <Step title="Open the dashboard and review Sample Task 000">
-    Open the dashboard, find the sample task, and review what it asks you to produce.
+  <Step title="Open the dashboard">
+    Learn the board, Chat Panel, Task Detail, Workspace Management, and Delivery Files areas.
   </Step>
-  <Step title="Create an agent">
-    Create an agent for the sample task. For Task 000, we recommend the **FE Dev** role.
+  <Step title="Talk to an agent">
+    Use the Chat Panel for questions, task shaping, review notes, and follow-up instructions.
   </Step>
-  <Step title="Ask the agent to assign the sample task and move it to Ready">
-    Chat with the agent and ask them to assign Sample Task 000 to you and move it to Ready.
+  <Step title="Review work on the board">
+    Use task status, next action, blockers, and linked evidence as source of truth.
   </Step>
-  <Step title="Wait for completion">
-    Once the task is Ready, it can be picked up for execution. Wait for the agent to finish the task.
-  </Step>
-  <Step title="Open the output and give feedback">
-    Open Files in your workspace, publish/open the completed Task 000 form output, then submit feedback or report an issue/bug.
+  <Step title="Open outputs and give feedback">
+    Review artifacts or delivery files, then approve, ask for changes, or report an issue.
   </Step>
 </Steps>
 
@@ -55,7 +68,9 @@ Workspace initialization is explicit. AgentDesk should not silently put a normal
 
 After initialization, AgentDesk may ask you to enter basic information about yourself.
 
-Provide enough context for AgentDesk to understand who you are and what kind of help you need. For example:
+Keep it short at first. You can improve it later.
+
+Useful fields include:
 
 | Field | Example |
 | --- | --- |
@@ -65,114 +80,96 @@ Provide enough context for AgentDesk to understand who you are and what kind of 
 | Context | Your project, company, product, or team context. |
 | Preference | How you want agents to communicate or help you. |
 
-This information helps agents respond with better context. You can keep it short at first and improve it later.
+This context helps agents respond with better assumptions and tone.
 
-## Step 3 — Open Dashboard and review Sample Task 000
+## Step 3 — Open the dashboard
 
-Open the **Dashboard**.
-
-Find **Sample Task 000** and review it before asking an agent to work on it.
-
-Check:
-
-- What the sample task is asking for.
-- What output it should produce.
-- Whether there are instructions or acceptance criteria.
-- Whether the task is still in a draft/inbox state or already ready.
-
-The dashboard is where you will see:
+The Dashboard is the main operating surface.
 
 | Area | What it is for |
 | --- | --- |
 | **Board** | Track tasks, statuses, blockers, next actions, and outcomes. |
 | **Chat Panel** | Talk to the selected agent. |
-| **Task Detail** | Review task summary, acceptance criteria, notes, activity, runtime events, and linked files. |
-| **Workspace Files** | Access outputs and files created by tasks. |
-
-## Step 4 — Create an agent
-
-Open **Workspace Management → Agents** and create an agent.
-
-For **Sample Task 000**, we recommend creating an agent with the **FE Dev** role because the expected output is a frontend-style form/page.
-
-A good first agent should have:
-
-- A clear display name.
-- Role: **FE Dev** for Task 000.
-- Enabled status.
-- A valid workspace/session mapping.
-
-## Step 5 — Ask the agent to assign Sample Task 000 and move it to Ready
-
-Open the Chat Panel, select the FE Dev agent you created, and send a request like:
-
-```text
-Please assign Sample Task 000 to me and move it to Ready so it can be picked up for execution.
-```
-
-The agent should update the task so it is assigned correctly and moved to **Ready**.
-
-<Note>
-When a task is **Ready**, it means the task is clear enough and allowed to be picked up for execution. Ready does not mean the task is already finished. It means the task can now be selected by the system/agent to start work.
-</Note>
+| **Task Detail** | Review scope, notes, activity, outputs, and evidence. |
+| **Workspace Management** | Manage agents, workspace settings, assistant/FAQ/feedback areas, and files. |
+| **Delivery Files** | Access official outputs or user-facing deliverables. |
 
 <Warning>
-Chat is not the final source of truth. After the agent replies, open the task on the board and verify that the task status is actually **Ready**.
+Chat is not the final source of truth. For important work, check the board status and linked evidence or delivery files.
 </Warning>
 
-## Step 6 — Wait for the agent to finish the task
+## Step 4 — Understand task status
 
-Once Sample Task 000 is Ready, the agent/system can pick it up and execute it.
+Common board statuses:
 
-You may see one of these states:
-
-| State | Meaning |
+| Status | Meaning |
 | --- | --- |
-| **Ready** | The task is clear and can be picked up for execution. |
-| **In progress / Active** | An agent is working on it. |
-| **Waiting** | The agent needs your input. |
-| **Blocked** | The task cannot continue safely. |
-| **Done** | The task has completed with output or evidence. |
+| **Inbox** | Request exists but needs shaping or approval. |
+| **Ready** | Clear and allowed to start. |
+| **Agent working** | An agent is actively executing. |
+| **Waiting on you** | The agent needs your input or decision. |
+| **Blocked** | Work cannot continue safely. |
+| **Ready to review** | Output/evidence exists and needs review. |
+| **Done / Closed** | Reviewed and accepted. |
 
-Wait until the task reaches **Done**. If it becomes **Waiting** or **Blocked**, open the task and follow the requested next action.
+<Note>
+**Ready** means the task can be picked up for execution. It does not mean the task is already finished.
+</Note>
 
-## Step 7 — Open Files, publish/open the output link, and submit feedback or issue
+## Step 5 — Talk to an agent
 
-After Sample Task 000 is done, open **Workspace Management → Files** or **Delivery Files**.
+Use the Chat Panel when you want to:
 
-Find the form output created by Task 000.
+- ask a question,
+- clarify a task,
+- request a task update,
+- attach files or screenshots,
+- ask for evidence,
+- give feedback after reviewing output.
 
-Then:
+Best practices:
 
-1. Open the file or folder for the Task 000 output.
-2. Use **Public** or the equivalent publish/share action if available.
-3. Open the generated public link.
-4. Review the completed form output in the browser.
-5. Submit feedback if the result is good or needs improvement.
-6. If something is broken, report an issue/bug for the AgentDesk developer team.
+- Select the right agent before sending.
+- Include the task id when discussing existing work.
+- Be explicit about expected output and verification.
+- Ask the agent to create a task if the conversation becomes executable work.
+
+## Step 6 — Review outputs
+
+When work is ready to review:
+
+1. Open the task from the board.
+2. Read the latest update and next action.
+3. Open linked outputs, artifacts, screenshots, traces, or delivery files.
+4. Compare the result with acceptance criteria.
+5. Approve/close if it passes, or add exact feedback if it does not.
+
+For public or shareable outputs, use **Delivery Files** or the relevant public link flow.
 
 ## What success looks like
 
-You have completed onboarding when:
+You have completed the basic orientation when:
 
 - Your workspace is initialized.
-- You entered basic self-introduction information.
-- You opened the dashboard.
-- You reviewed Sample Task 000.
-- You created an FE Dev agent.
-- You asked the agent to assign Sample Task 000 and move it to Ready.
-- You understand that Ready means the task can be picked up for execution.
-- The agent completed the task.
-- You opened the output from workspace files.
-- You submitted feedback or reported an issue/bug.
+- Your profile/context is entered.
+- You can find the board, Chat Panel, Task Detail, Workspace Management, and Delivery Files.
+- You understand the difference between chat replies and task truth.
+- You understand that Ready means executable, not done.
+- You know where to review outputs and evidence.
 
 ## Next steps
 
 <CardGroup cols={2}>
   <Card title="Create and review your first task" icon="square-check" href="/user-guide/first-task">
-    Learn how to review a task before execution and verify its output.
+    Turn a request into clear work that an agent can execute and you can verify.
+  </Card>
+  <Card title="Write clear tasks for agents" icon="list-check" href="/user-guide/task-writing-best-practices">
+    Use a practical template for better task briefs and deliverables.
   </Card>
   <Card title="Working with agents" icon="users" href="/user-guide/working-with-agents">
     Learn how to choose the right agent and keep conversations clear.
+  </Card>
+  <Card title="Dashboard board" icon="table-columns" href="/user-guide/dashboard-board">
+    Learn how to track task status, blockers, next actions, and review state.
   </Card>
 </CardGroup>

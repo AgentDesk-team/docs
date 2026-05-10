@@ -1,94 +1,210 @@
 ---
 title: "Create and review your first task"
-description: "How to review Sample Task 000, create an FE Dev agent, move the task to Ready, and verify the output."
+description: "Turn a request into a clear AgentDesk task, assign it to the right agent, and verify the delivered output."
 ---
 
 # Create and review your first task
 
-For onboarding, the recommended first task is **Sample Task 000**. This task helps you learn the basic AgentDesk flow: review a task, create an agent, move the task to Ready, wait for execution, open the output, and submit feedback.
+Use this guide after you understand the basic onboarding flow in [Getting started](/user-guide/getting-started). This page focuses on creating a real task that an agent can execute and you can review with confidence.
 
-## Before you start
+## What a good first task should include
 
-Make sure you have already:
+A good task is clear enough for an agent to act on without guessing.
 
-1. Initialized your workspace.
-2. Entered basic information about yourself.
-3. Opened the dashboard.
-4. Found and reviewed Sample Task 000.
+At minimum, include:
 
-## Create the recommended agent
-
-For Sample Task 000, create an agent with the **FE Dev** role.
-
-This role is recommended because Task 000 is expected to produce a frontend-style form/page output.
-
-## Ask the agent to prepare the task
-
-Open the Chat Panel, select your FE Dev agent, and send:
-
-```text
-Please assign Sample Task 000 to me and move it to Ready so it can be picked up for execution.
-```
-
-The agent should update the task assignment and status.
-
-## What Ready means
+- **Goal** — what outcome you want.
+- **Context** — why this matters and what the agent should know.
+- **Expected output** — what file, UI change, report, docs page, proof, or decision you expect.
+- **Acceptance criteria** — what must be true before you accept the work.
+- **Verification** — how the agent should prove it works.
 
 <Note>
-**Ready** means the task is clear enough and allowed to be picked up for execution. It does not mean the task is done. It means the task is now eligible for the system/agent to start work.
+For a deeper template, see [Write clear tasks for agents](/user-guide/task-writing-best-practices).
 </Note>
 
-## Review before execution
-
-Before the task runs, open it from the dashboard and check:
-
-| Check | What to look for |
-| --- | --- |
-| Title | Is it clearly Sample Task 000? |
-| Status | Is it **Ready**? |
-| Owner / assignee | Is it assigned correctly? |
-| Summary | Does it explain the goal? |
-| Next action | Is the next action concrete? |
-| Output | Is the expected form/page output clear? |
-| Scope | Is there anything unexpected or too broad? |
-
-If the task is unclear, ask the agent to fix it before continuing.
-
-## Wait for completion
-
-After review, let the agent complete the task. Watch the status:
-
-- **Ready** means queued/eligible for work.
-- **In progress / Active** means an agent is working.
-- **Waiting** means the agent needs your input.
-- **Blocked** means something prevents safe progress.
-- **Done** means the output should be ready to review.
-
-## Open the output and give feedback
-
-When the task is Done:
-
-1. Open **Workspace Management → Files** or **Delivery Files**.
-2. Find the Task 000 form output.
-3. Use **Public** or the equivalent share action if needed.
-4. Open the public link in the browser.
-5. Review the completed form output.
-6. Submit feedback, or report an issue/bug for the AgentDesk developer team if something is broken.
-
-## For real tasks after onboarding
-
-Use this format:
+## Example task request
 
 ```text
-Goal: What are we trying to achieve?
-Output: What should be produced?
-Context: What should the agent know?
-Constraints: What should not happen?
-Done means: How will we know this succeeded?
+Create a User Guide page that explains how to bind an AgentDesk agent to a Telegram bot.
+
+Goal:
+Users should understand the Telegram bind flow without asking the team.
+
+Context:
+TASK-073 added Telegram binding from the Chat Panel.
+
+Scope:
+- Explain prerequisites.
+- Explain bind steps.
+- Explain test connection.
+- Explain limitations and error states.
+- Add the page to docs navigation.
+
+Out of scope:
+- Do not change product code.
+- Do not describe unimplemented multi-user routing as available.
+
+Expected output:
+A new docs page in the public AgentDesk docs repo.
+
+Acceptance criteria:
+- Page appears in User Guide navigation.
+- docs.json remains valid.
+- Commit hash and expected public URL are provided.
+
+Verification:
+Validate docs.json and run mint validate if available.
 ```
 
-## Important rule
+## Create the task
+
+You can create work from chat or from the board.
+
+### From chat
+
+Ask an agent or assistant to create the task:
+
+```text
+Create a task for this request and keep it in inbox until I approve it.
+```
+
+This is useful when the request still needs shaping.
+
+### From the board
+
+Use the task creation flow when you already know the goal, output, and acceptance criteria.
+
+After creating the task, open Task Detail and check that the task has:
+
+| Field | What to check |
+| --- | --- |
+| Title | Short and action-oriented. |
+| Summary | Explains the outcome, not only activity. |
+| Status | Usually starts in **Inbox** unless you already approved execution. |
+| Owner / executor | The right agent or person is responsible. |
+| Next action | One concrete next step. |
+| Acceptance criteria | Observable pass/fail checks. |
+| Related files | Specs, screenshots, examples, or source links. |
+
+## Move the task to Ready
+
+Move a task to **Ready** only when it is clear enough to execute.
+
+<Note>
+**Ready** means the task can be picked up for execution. It does not mean the task is done.
+</Note>
+
+Before moving to Ready, ask:
+
+- Is the goal clear?
+- Is the expected output clear?
+- Is the scope small enough?
+- Are acceptance criteria testable?
+- Is there a named verification method?
+- Is the right agent assigned?
+
+If the answer is no, keep the task in **Inbox** and ask for clarification/spec first.
+
+## Assign the right agent
+
+Pick the agent whose role matches the task.
+
+Examples:
+
+| Task type | Good agent fit |
+| --- | --- |
+| Product requirements, task shaping | Product / PO assistant |
+| UI design and interaction flow | Designer / UIUX |
+| Frontend implementation | FE Dev |
+| Backend/API/data logic | BE Dev |
+| Architecture or cross-system design | Solution Architect |
+| QA, proof, regression checks | QA / verification agent |
+| Docs and user guides | Product/docs-capable agent |
+
+If the task crosses roles, split it or ask one agent to produce a spec first.
+
+## Track execution
+
+While the agent works, use the board as source of truth.
+
+Common statuses:
+
+| Status | Meaning |
+| --- | --- |
+| **Inbox** | Request exists but needs shaping or approval. |
+| **Ready** | Clear and allowed to start. |
+| **Agent working** | An agent is actively executing. |
+| **Waiting on you** | The agent needs your input or decision. |
+| **Blocked** | Work cannot continue safely. |
+| **Ready to review** | Output/evidence exists and needs review. |
+| **Done / Closed** | Reviewed and accepted. |
 
 <Warning>
-A chat reply is not enough to consider a task done. Always check the task state and output/evidence on the dashboard or in workspace files.
+A chat message saying "done" is not enough. Check the task status, linked evidence, and output files.
 </Warning>
+
+## Review the output
+
+When the task is ready to review:
+
+1. Open the task from the board.
+2. Read the latest update and next action.
+3. Open linked artifacts, delivery files, screenshots, or public URLs.
+4. Compare the output against the acceptance criteria.
+5. Check the verification evidence.
+6. If it passes, approve/close the task.
+7. If it fails, reopen or add feedback with the exact issue.
+
+## What good proof looks like
+
+Proof depends on the task type:
+
+| Work type | Good proof |
+| --- | --- |
+| UI behavior | Playwright/browser E2E plus screenshot. |
+| API/backend | Tests plus request/response evidence. |
+| Docs | Public docs path, commit hash, and validation result. |
+| Data/report | Source files, method, and generated output. |
+| Live integration | Exact account/profile/environment and observed result. |
+
+## When to ask for a spec first
+
+Ask for analysis/spec before execution when:
+
+- the requirement is vague,
+- the task affects public API or architecture,
+- the work has security/privacy risk,
+- success criteria are unclear,
+- multiple agents/teams will be involved,
+- the output may be expensive to rework.
+
+Example:
+
+```text
+Analyze this feature and write a short spec with scope, out-of-scope, acceptance criteria, risks, and verification plan. Do not implement until I approve.
+```
+
+## Quick checklist
+
+Before assigning a task:
+
+- [ ] Goal is clear.
+- [ ] Scope is bounded.
+- [ ] Out-of-scope is stated.
+- [ ] Expected output is named.
+- [ ] Acceptance criteria are testable.
+- [ ] Verification method is explicit.
+- [ ] Correct agent is assigned.
+- [ ] Task is small enough to finish and review.
+
+## Next steps
+
+<CardGroup cols={2}>
+  <Card title="Write clear tasks for agents" icon="list-check" href="/user-guide/task-writing-best-practices">
+    Use a detailed template for high-quality agent tasks.
+  </Card>
+  <Card title="Dashboard board" icon="table-columns" href="/user-guide/dashboard-board">
+    Learn how to track status, blockers, next actions, and review state.
+  </Card>
+</CardGroup>
