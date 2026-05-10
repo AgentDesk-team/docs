@@ -59,29 +59,29 @@ Validate docs.json and run mint validate if available.
 
 ## Create the task
 
-You can create work from chat or from the board.
+In the current AgentDesk product, create tasks through chat with an agent. Direct task creation from the board is not the supported user flow yet.
 
-### From chat
+Prefer using the **Agent Product Owner** for task creation and task shaping. The Product Owner agent is best suited to turn a messy request into clear scope, acceptance criteria, and next actions before execution.
 
-Ask an agent or assistant to create the task:
+Send a request like:
 
 ```text
 Create a task for this request and keep it in inbox until I approve it.
 ```
 
-This is useful when the request still needs shaping.
+If the request is already approved for execution, say that explicitly:
 
-### From the board
+```text
+Create a task for this request, assign it to the right agent, and move it to Ready.
+```
 
-Use the task creation flow when you already know the goal, output, and acceptance criteria.
-
-After creating the task, open Task Detail and check that the task has:
+After the agent creates the task, open Task Detail and check that it has:
 
 | Field | What to check |
 | --- | --- |
 | Title | Short and action-oriented. |
 | Summary | Explains the outcome, not only activity. |
-| Status | Usually starts in **Inbox** unless you already approved execution. |
+| Status | Usually starts in **Inbox** unless you explicitly approved execution. |
 | Owner / executor | The right agent or person is responsible. |
 | Next action | One concrete next step. |
 | Acceptance criteria | Observable pass/fail checks. |
