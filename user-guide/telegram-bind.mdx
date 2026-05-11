@@ -5,9 +5,9 @@ description: "Connect an AgentDesk agent to a Telegram bot and use Telegram as a
 
 # Telegram bot binding
 
-Telegram binding lets you connect one AgentDesk agent to one Telegram bot from the Dashboard Chat Panel.
+Telegram binding connects one AgentDesk agent to one Telegram bot from the Dashboard Chat Panel.
 
-After binding, AgentDesk can show the agent's Telegram connection state, validate the bot token, switch the Chat Panel to a Telegram-linked session when possible, and route Telegram messages for that bot to the bound agent.
+The setup is a multi-step flow. Connecting the bot validates and saves the bot identity, but Telegram chat routing may need one more setup step before live messages sync correctly.
 
 ## Before you start
 
@@ -16,11 +16,11 @@ You need:
 - A Telegram account.
 - A Telegram bot token from BotFather.
 - Permission to manage the workspace or the agent.
-- For full direct-message session linking, the workspace Telegram allowlist should contain the Telegram user ID that will DM the bot.
+- Access to the AgentDesk workspace gateway restart action if the UI says runtime sync is not active yet.
 
-<Warning>
-Workspace-level Telegram user ID setup is not yet a first-class UI step. If `channels.telegram.allowFrom` has exactly one user ID, AgentDesk can compute the real runtime Telegram session key automatically. If it is missing or has multiple users, AgentDesk falls back to a generic Telegram DM session key and may not auto-switch to the exact live Telegram DM lane.
-</Warning>
+<Note>
+You usually do not need to find or type your numeric Telegram user ID manually. After you message the bot, AgentDesk can detect the latest Telegram user from runtime evidence, pairing data, or pending Telegram updates.
+</Note>
 
 ## Create a Telegram bot and get the token
 
@@ -77,13 +77,43 @@ Optional BotFather commands:
 6. Confirm the bind action.
 7. Wait for token validation.
 
-If successful, the dialog shows:
-
-- the connected bot username,
-- an **Open Telegram** link when the bot username is available,
-- a success message that the Chat Panel switched to the shared Telegram session.
+If successful, AgentDesk saves the connected bot identity and shows the bot username.
 
 The raw bot token is not shown again after save.
+
+<Note>
+After a bot is connected, the dialog no longer shows **Connect Telegram**. The available actions are **Unbind** and **Test connection**.
+</Note>
+
+## Finish Telegram user detection
+
+After the bot is connected, AgentDesk needs to know which Telegram user should be allowed to chat with the bound agent.
+
+1. In the Telegram Bot dialog, click **Send a DM to the bot**.
+   - This opens Telegram directly for the connected bot.
+2. Send any message to the bot from the Telegram account you want to use with AgentDesk.
+3. Return to the AgentDesk Telegram Bot dialog.
+4. Click **Detect latest Telegram user**.
+
+AgentDesk attempts to detect the Telegram user from runtime evidence, pairing data, or pending Telegram updates. If detection succeeds, AgentDesk saves the detected `telegram_user_id` for the workspace routing config.
+
+At this point, routing is saved. That does not always mean live Telegram sync is active immediately in the running workspace gateway.
+
+## Apply runtime sync if needed
+
+In some cases, the workspace gateway is already using the latest Telegram routing config. In other cases, the UI may show a warning that runtime sync is not active yet.
+
+If the dialog shows a restart warning or restart call-to-action, restart the workspace gateway from the UI.
+
+After restart completes, the expected success message is:
+
+```text
+Workspace gateway restarted. Telegram is successfully bound.
+```
+
+<Warning>
+Do not assume every bind requires a gateway restart. First connect the bot, send a DM, detect the Telegram user, and follow the UI warning. Restart only when AgentDesk says the current runtime has not applied the saved routing yet.
+</Warning>
 
 ## Test the connection
 
@@ -98,27 +128,22 @@ The current test checks the saved binding and bot identity. Token validation use
 
 Expected user flow:
 
-1. Bind the Telegram bot to the agent.
-2. Open the bot in Telegram using the displayed bot username or deep link.
-3. Send a message to the bot from the allowed Telegram user.
-4. OpenClaw routes that Telegram message to the bound AgentDesk agent.
-5. The agent reply is sent back through the Telegram bot.
+1. Create a Telegram bot in BotFather and copy the token.
+2. Bind the bot token to an AgentDesk agent.
+3. Click **Send a DM to the bot** and send a Telegram message to the bot.
+4. Click **Detect latest Telegram user** in AgentDesk.
+5. If AgentDesk warns that runtime sync is not active, restart the workspace gateway from the UI.
+6. Send a message to the bot in Telegram.
+7. OpenClaw routes that Telegram message to the bound AgentDesk agent.
+8. The agent reply is sent back through the Telegram bot.
 
-When the workspace has exactly one configured Telegram `allowFrom` user, the Dashboard can build the runtime session key in this format:
+When routing is active, the Dashboard can use the runtime Telegram direct-session format:
 
 ```text
 agent:<agent_id>:telegram:<account_id>:direct:<telegram_user_id>
 ```
 
-This lets the Chat Panel auto-switch to the same Telegram-linked session used by live Telegram inbound messages.
-
-If the workspace does not have one clear Telegram user ID, the Dashboard falls back to:
-
-```text
-agent:<agent_id>:telegram:dm:<account_id>
-```
-
-That fallback still records the binding, but it may not be the exact same lane as the live Telegram DM session.
+This lets the Chat Panel switch to the same Telegram-linked session used by live Telegram inbound messages.
 
 ## What is implemented now
 
@@ -131,16 +156,21 @@ Implemented behavior:
 - Binding state is stored server-side and exposed as redacted public metadata.
 - Agent roster/contact metadata updates after bind.
 - OpenClaw profile Telegram account/binding config updates after bind.
-- Chat Panel refreshes and can auto-switch to the Telegram-linked session.
-- If `allowFrom` has exactly one Telegram user ID, linked session key uses the real OpenClaw runtime Telegram direct-session format.
+- **Send a DM to the bot** opens Telegram directly for the connected bot.
+- **Detect latest Telegram user** can save workspace Telegram routing from runtime evidence, pairing data, or pending Telegram updates.
+- After successful detection, routing is saved; runtime sync may still require a workspace gateway restart.
+- If runtime sync is not active, the UI shows a warning and restart call-to-action.
+- After a successful gateway restart, the UI confirms that Telegram is successfully bound.
+- After a bot is connected, **Connect Telegram** is hidden; **Unbind** and **Test connection** remain available.
 - Unbind endpoint and UI button exist, even though unbind/rotate was originally outside the first MVP scope.
 
 Current limitations:
 
-- Workspace settings UI does not yet provide a first-class field for the user to enter their Telegram user ID.
-- Multi-user Telegram bot routing is not fully generic. One workspace user / one `allowFrom` user is the supported happy path.
+- Telegram binding is optimized for the one-workspace-user happy path.
+- Multi-user Telegram bot routing is not fully generic yet.
 - `getMe` validation proves the token and bot identity; it does not prove a full inbound/outbound Telegram conversation by itself.
-- If the Dashboard process is serving old code, reload or restart may be needed before new bind/session behavior appears.
+- Saved routing may require workspace gateway restart before live Telegram sync is active.
+- If the Dashboard process is serving old code, reload may be needed before new bind/session behavior appears.
 
 ## Error states
 
@@ -152,6 +182,8 @@ You may see these errors:
 - **Bot already bound** — the Telegram bot is already connected to another AgentDesk agent/workspace.
 - **Agent not found** — the selected agent does not exist or is disabled.
 - **No connected Telegram binding** — test was attempted before a successful bind.
+- **No Telegram user detected** — AgentDesk has not seen a usable Telegram DM/update for this bot yet. Click **Send a DM to the bot**, message the bot in Telegram, then try detection again.
+- **Routing saved but runtime sync pending** — AgentDesk saved the detected Telegram user, but the running workspace gateway has not applied the routing yet. Follow the restart call-to-action if shown.
 
 ## Security notes
 
@@ -160,15 +192,4 @@ You may see these errors:
 - Public binding metadata contains bot identity, status, account ID, deep link, and linked session key only.
 - The saved token is written into the OpenClaw profile Telegram account config so the Telegram provider can use it.
 - Binding changes are logged/audited without exposing the raw token.
-
-## Recommended next setup improvement
-
-Add a workspace setup step for Telegram user ID:
-
-1. User opens Workspace Settings.
-2. User enters their Telegram user ID.
-3. AgentDesk saves it as workspace Telegram identity.
-4. AgentDesk syncs it into `channels.telegram.allowFrom`.
-5. Telegram bind can always compute the exact direct session key for that workspace user.
-
-This removes the need for manual JSON config edits in the one-workspace-user happy path.
+- Detected Telegram user routing is saved as workspace configuration; do not share screenshots that expose private user/account identifiers if that is sensitive for your workspace.
