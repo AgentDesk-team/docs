@@ -13,13 +13,44 @@ A useful task usually includes:
 
 - Title.
 - Status.
-- Owner or executor.
+- Assignee or responsible agent.
 - Priority.
 - Summary or source request.
 - Acceptance criteria.
 - Next action.
 - Latest update.
 - Attachments, artifacts, or delivery links.
+
+## Common task states
+
+| Status | Meaning |
+| --- | --- |
+| **Inbox** | A request exists, but it is not ready to execute yet. It may still need shaping, clarification, or approval. |
+| **Drafting spec** | The work is being clarified into a more executable task shape. |
+| **Pending approval / Pending** | The task is waiting for a user or owner decision before execution should continue. |
+| **Ready** | The task is clear enough and allowed to start. |
+| **In progress / Agent working** | An agent is actively executing the task or subtask. |
+| **Waiting** | Work is paused because the task is waiting on input, another step, or an external dependency. |
+| **Blocked** | Work cannot continue safely until a real blocker is removed. |
+| **Ready to review** | Output or evidence exists and needs human review. |
+| **Done / Closed** | Reviewed and accepted. |
+
+## Waiting vs blocked
+
+This distinction matters:
+
+- **Waiting** usually means the work can continue later after a decision, dependency, or reply.
+- **Blocked** means the work cannot safely proceed in its current state.
+
+Examples:
+
+- Waiting for your approval to move forward → usually **Pending approval** or **Waiting**.
+- Waiting for a dependency task to finish → usually **Waiting**.
+- Missing credentials, broken environment, or failed prerequisite → usually **Blocked**.
+
+<Note>
+If a task is still in Inbox, Drafting spec, or Pending approval, do not assume the agent should already be executing it.
+</Note>
 
 ## Activity vs Runtime
 

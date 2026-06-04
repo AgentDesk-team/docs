@@ -1,11 +1,11 @@
 ---
 title: "Workspace Management"
-description: "Manage your AgentDesk workspace, settings, agents, and files."
+description: "Manage your AgentDesk workspace, settings, agents, connections, and files."
 ---
 
 # Workspace Management
 
-Workspace Management is where you manage your AgentDesk account and workspace.
+Workspace Management is where you manage your AgentDesk workspace beyond day-to-day chat and task handling.
 
 ## What a workspace contains
 
@@ -32,10 +32,46 @@ Workspace initialization is explicit. AgentDesk should not silently route a norm
 | --- | --- |
 | **Overview** | Shows workspace status and key links. |
 | **Agents** | Create, edit, disable, or review agents. |
+| **Connections** | Connect workspace-level providers or services that agents depend on. |
 | **Settings** | Workspace-level settings and metadata. |
 | **Audit / Status** | Review important events and health information. |
 | **Delivery Files** | Manage files produced for you. |
 | **Danger Zone** | Destructive or sensitive actions that require care. |
+
+## Connections
+
+Connections is where you set up external services that some workflows depend on.
+
+Examples may include:
+
+- model or provider access,
+- search providers,
+- design/content providers,
+- messaging or channel integrations.
+
+What matters from a user perspective:
+
+- A connection can be required before an agent can complete certain work.
+- A saved credential is not always the same as a fully working runtime connection.
+- If a provider shows attention needed, pending setup, or similar status, treat that as setup still in progress.
+
+<Note>
+If a workflow depends on an external service and the connection is incomplete, the task may remain waiting or blocked until setup is finished.
+</Note>
+
+## Files: artifacts vs deliveries
+
+Workspace Management may surface file areas indirectly through tasks, reviews, or linked paths.
+
+| Type | Use for |
+| --- | --- |
+| **Artifacts** | Internal proof such as screenshots, traces, logs, and test output. |
+| **Deliveries** | Final outputs meant for review, download, or handoff. |
+
+Use this distinction when reviewing work:
+
+- Check **artifacts** when you want proof.
+- Check **deliveries** when you want the final result.
 
 ## Safety expectations
 
