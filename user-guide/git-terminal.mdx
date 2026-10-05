@@ -11,6 +11,10 @@ Use **Add project folder** when a folder is not yet available in the panel. Choo
 
 A folder must already be a Git repository for Git review to work. Adding a folder does not automatically initialize Git or clone a remote repository.
 
+## Connect GitHub or GitLab
+
+Follow [Connect GitHub and GitLab](/user-guide/git-provider-tokens) to configure a token using a temporary file upload or a hidden Terminal prompt, then ask an agent to validate authenticated access.
+
 ## Review source changes
 
 Open **Changes** to select modified files and inspect their diffs. Use **Commits** and available review-version controls to inspect history. Check the branch and repository before staging or committing.
@@ -34,7 +38,9 @@ If an action fails because the runtime, credentials, or branch state is unavaila
 
 ## Terminal
 
-Open **Terminal**, enter the intended command, and use **Run**. Output appears in the terminal surface; use the offered Stop or close controls for your session.
+In Agent Chat, choose **Show panel** if the right-hand panel is closed. Use **+ → New tab → Terminal** on its tab bar, then select the intended project folder from the same **+** menu. Use **Add project folder** for an existing repository folder that is not yet listed.
+
+Enter the intended command in **Shell command** and use **Run**. Output appears in the terminal surface; use the offered Stop or close controls for your session.
 
 Commands run in the configured workspace runtime and can modify files or access the network. Terminal mutation controls require authorized workspace access. Confirm the working directory and command purpose before running.
 

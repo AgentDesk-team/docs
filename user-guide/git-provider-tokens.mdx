@@ -1,0 +1,161 @@
+---
+title: "Connect GitHub and GitLab"
+description: "Configure a repository token by uploading a file or entering it privately in Terminal, then ask an agent to validate the connection."
+---
+
+Connect a repository in your workspace runtime using a personal access token (PAT). Choose the easy file-upload method or the more secure Terminal method. After setup, ask the agent to validate authenticated access to the intended repository.
+
+These methods use the existing Files and Terminal tools. The current UI does not have a dedicated GitHub/GitLab token connection form.
+
+## Before you start
+
+Have the repository's HTTPS URL, your provider username, and the intended project/repository folder ready. Use a URL without a token, such as:
+
+```text
+https://github.com/company/project.git
+https://gitlab.example.com/team/project.git
+```
+
+Ask the agent to prepare the repository if it is not already present. Confirm that the workspace runtime is available and that your role permits the required setup.
+
+### Create a token
+
+**GitHub:** Open your account **Settings → Developer settings → Personal access tokens → Fine-grained tokens → Generate new token**. Select an expiration date, the correct resource owner, and only the repositories you need. Grant **Contents: Read-only** for reading, or **Read and write** when the agent will also change code. Complete organization approval if required. See [GitHub token creation and compatibility guidance](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens).
+
+**GitLab:** On the GitLab host that owns your repository, open **Edit profile → Access → Personal access tokens**. Create an expiring PAT; newer versions may label the scope-based option **Legacy token**. Select **read_repository** for reading or **write_repository** for reading and pushing. These Git scopes do not grant general API access. See [GitLab token creation](https://docs.gitlab.com/user/profile/personal_access_tokens/) and [scope definitions](https://docs.gitlab.com/security/tokens/access_token_scopes/).
+
+A token cannot grant access that your provider account does not already have. Copy it once for the method below; do not paste it into an Agent Chat message.
+
+## Choose a setup method
+
+| Method | What you do | Security tradeoff |
+| --- | --- | --- |
+| **Easy way: upload a file** | Upload a temporary text file and ask the agent to configure the credential from its path. | The token exists as a readable file in WS Files until removed; workspace access and any sync or backups still apply. |
+| **More secure way: Terminal** | Enter the token at Git's hidden password prompt. | Avoids an uploaded token file and token text in chat or commands. Credential storage still needs to be configured correctly. |
+
+<Tabs>
+<Tab title="Easy way: upload a file">
+
+### 1. Make a temporary token file
+
+On your computer, create a plain-text file such as **github-token.txt** or **gitlab-token.txt** containing only the token on one line. Keep the username, repository URL, and setup request separate from that file.
+
+### 2. Upload it to WS Files
+
+Open **Files**, choose a temporary folder outside the repository, and use **Upload**.
+
+For example, use **WS Files/Working-files/Git-connection/** only after checking that this folder is outside your Google Drive sync scope. The folder name does not automatically exclude it from sync or protect it.
+
+Avoid shared links, previews, **Use in chat**, and chat attachments for this file. Send its path to the agent rather than its contents.
+
+### 3. Ask the agent to configure and validate
+
+Replace the placeholders in this message; do not include the token itself:
+
+```text
+Connect the repository [HTTPS URL] for project [project name]
+in repository folder [folder path]. My provider username is [username].
+The token is in [exact WS Files path].
+
+Read the token directly inside the workspace runtime without returning
+its contents in a tool result or chat. Configure the Git credential
+helper for this repository, preserving any suitable existing setup.
+Do not put the token in the remote URL, source files, context files,
+command arguments, or logs.
+
+If no suitable credential storage is configured, use a temporary
+in-memory credential cache and tell me how long it will remain available.
+Validate authenticated read access to this exact repository.
+Report success or the cause of failure without showing the token,
+and tell me when I can delete the uploaded file.
+```
+
+The agent should load the file within the configuration process and pass the credential directly to Git, rather than display it through file-reading output. Setup depends on the agent's tools and permissions; the request does not make WS Files a secret vault.
+
+### 4. Remove the temporary file
+
+Once the agent confirms that the credential is configured and the connection has been validated, delete the uploaded file through **Files**. Remove the temporary copy on your computer when it is no longer needed.
+
+Deleting the file does not remove the configured credential. It also does not guarantee removal from any earlier sync or backup copies.
+
+<Warning>
+This is a convenience method with a plaintext token file. WS Files does not give an uploaded token file special secret protection. Choose Terminal when the token must not be stored in ordinary workspace files.
+</Warning>
+
+</Tab>
+<Tab title="More secure way: Terminal">
+
+### 1. Ask the agent to prepare the credential helper
+
+Send this request without the token:
+
+```text
+Prepare repository [folder path] for [HTTPS URL] in this project.
+Use my provider username [username].
+Check the existing Git credential helper and preserve suitable storage.
+If none is configured, prepare a repository-local in-memory cache
+with a one-hour timeout. Do not configure plaintext credential storage.
+Do not request the token in chat. Give me a token-free Terminal setup
+command that asks for the token with hidden input and passes it directly
+to the configured helper. It must also work for public repositories.
+```
+
+For a repository that has no helper to preserve, the agent can prepare the temporary cache with:
+
+```bash
+git config --local credential.helper ''
+git config --local --add credential.helper 'cache --timeout=3600'
+git config --local credential.useHttpPath true
+```
+
+The empty helper resets inherited helpers for this repository, so setup should review the existing configuration first. These settings contain no token. Repository-path matching helps distinguish credentials for different repositories on the same host.
+
+### 2. Open the project's Terminal
+
+1. Open **Agent Chat**.
+2. If the right-hand workspace panel is closed, choose **Show panel**.
+3. Choose **+ → New tab → Terminal** on the panel's tab bar.
+4. In the same **+** menu, select the intended project folder. If it is missing, choose **Add project folder** and select the existing repository folder.
+5. Confirm the folder shown in Terminal before continuing.
+
+The folder selected in this panel determines where commands run. It is separate from the AgentDesk Project associated with a chat session. Terminal execution requires authorized workspace access and an available runtime.
+
+### 3. Enter the token at the hidden prompt
+
+Copy the token-free setup command supplied by the agent into **Shell command** and choose **Run**. The command should ask for your username, if needed, and then show a **Token** or **Password** prompt with hidden input.
+
+Paste the PAT into the running Terminal surface at that prompt and press Enter. Do not paste it into **Shell command** or chat. Password characters are not echoed. The setup process should pass the credential directly to the configured helper and report only that configuration succeeded.
+
+For example, the Terminal interaction should look like this:
+
+```text
+Provider username: your-username
+Token: [input is hidden]
+Credential configured. Ask the agent to validate the connection.
+```
+
+The username is not secret; the token must stay hidden. Ask the agent to supply a command that uses hidden input and does not echo, log, or return the token. The displayed command itself must contain no token value.
+
+Do not rely solely on a command such as `git ls-remote origin HEAD` to enter a new token: public repositories or an existing credential may make it succeed without a password prompt. The explicit setup prompt lets you configure the intended token before validation.
+
+### 4. Ask the agent to validate
+
+```text
+Validate the configured authentication and read access to [HTTPS URL]
+in repository folder [folder path].
+Confirm the exact repository and whether authenticated access succeeds.
+Do not show the token or full credential output.
+```
+
+The cache example keeps the credential in memory for up to one hour. The credential must be entered again after cache expiry or runtime restart. It is temporary storage, not a permanent encrypted connection. See [Git credential-cache](https://git-scm.com/docs/git-credential-cache) and [credential helper configuration](https://git-scm.com/docs/gitcredentials).
+
+</Tab>
+</Tabs>
+
+## Connection confirmed
+
+The agent should report the provider, repository, authenticated read-access result, and any credential lifetime limitation. A listing of public repository references alone is insufficient proof of authentication. If validation fails, ask the agent to explain the cause without showing credential contents.
+
+Setup is complete when authenticated access to the intended repository succeeds. For later commit, pull, push, or PR/MR work, ask the agent to perform it.
+
+This connection does not change repository permissions, branch protection, or workspace permissions. It is separate from [importing a skill from a public GitHub URL](/user-guide/workspace-skills#import-skills).

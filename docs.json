@@ -49,6 +49,7 @@
               "user-guide/delivery-files",
               "user-guide/preview-review",
               "user-guide/git-terminal",
+              "user-guide/git-provider-tokens",
               "user-guide/google-drive-sync",
               "user-guide/publish-apps"
             ]
