@@ -1,46 +1,49 @@
 ---
 title: "Working with agents"
-description: "How to choose agents and keep conversations clear."
+description: "Choose the right agent and distinguish conversation, responsibility, and execution."
 ---
 
 # Working with agents
 
-AgentDesk is designed around a team of agents. Each agent has a role, context, and session. Choosing the right agent helps keep work focused.
+An agent is a named AI teammate with a role, context, model settings, and tools available in your workspace. Its role helps you decide what to ask; its capabilities still depend on workspace permissions and connections.
 
-## Agent vs assignee
+## Choose an agent
 
-| Term | Meaning |
+Use the Agents area in Agent Chat, search by name, and select the agent you want to talk with. Check the active agent before sending. Agents can have multiple sessions; choosing an agent does not combine their conversation histories.
+
+| Work | Suggested role |
 | --- | --- |
-| **Agent** | A named AI teammate you can talk to. |
-| **Assignee** | The agent currently responsible for doing a task or work chunk. |
-| **Lane** | Internal UI/session mapping for one agent conversation. You usually do not need this term. |
+| Clarify goals, scope, and acceptance criteria | Product Owner or product assistant |
+| Plan architecture and cross-system changes | Solution architect |
+| Implement or inspect an interface | Frontend engineer |
+| Work on APIs and data | Backend engineer |
+| Design an interaction or visual | Designer |
+| Verify behavior and review evidence | QA or reviewer |
+| Operate an approved environment | DevOps |
+| Research, writing, and business decisions | A suitable research or business agent |
 
-## Choosing the right agent
+Use **Create agent** when you need a reusable teammate with a different role. Use a new session when you need a separate conversation with the same agent.
 
-| Work type | Suggested agent type |
-| --- | --- |
-| Requirements, scope, acceptance criteria | Product / PO assistant |
-| Architecture or cross-system design | Solution architect |
-| Backend/API/data work | Backend engineer |
-| Frontend/UI work | Frontend engineer |
-| UX/UI design | Designer |
-| Testing/review | QA/reviewer |
-| Deployment/runtime operations | DevOps |
-| Positioning/marketing/PMF | Marketing or business agent |
+## Give enough context
 
-## Avoiding confusion
+Include the outcome, audience, constraints, source material, and how you will review the result. A useful request is:
 
-- Check which agent is selected before sending a message.
-- Keep follow-up questions in the same relevant agent conversation when possible.
-- If you want another agent to review or continue work, say that explicitly.
-- If an agent seems to be missing context, reference the task id or attach/link the relevant file.
+```text
+Compare these two onboarding approaches for first-time users.
+Use the attached research, recommend one approach, and explain the tradeoffs.
+Do the analysis first; wait for my approval before implementing.
+```
 
-## What should be visible
+For existing tracked work, reference the actual task ID and project. An attached task or project reference helps the agent locate context; it does not move the conversation into another project or approve execution.
 
-When an agent is working on something, you should be able to see:
+## Owner, assignee, and active executor
 
-- The task or subtask being worked on.
-- The assignee.
-- The current next action.
-- Whether the task is active, waiting, blocked, or done.
-- Evidence or output when the task is complete.
+The **Owner** represents task responsibility. The **Assignee** identifies who is assigned to the task. An **active execution** records the agent run currently doing the work. These fields have different purposes.
+
+The current Task Detail supports one assignee, not a multi-assignee list. Changing task responsibility alone does not transfer an active run. Use the supported lifecycle or handoff process if another agent must continue running work.
+
+## Follow progress
+
+Use chat for discussion and Task Detail for lifecycle, next action, attachments, and execution history. If work is Waiting or Blocked, provide the missing decision or resolve the recorded obstacle. If you need another agent's review, request it explicitly and identify the exact output.
+
+See [Agent management](/user-guide/agent-management) for profile, context, and availability controls.

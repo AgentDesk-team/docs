@@ -24,14 +24,48 @@
             ]
           },
           {
-            "group": "Using AgentDesk",
+            "group": "Agents and conversations",
+            "pages": [
+              "user-guide/chat-panel",
+              "user-guide/sessions-privacy",
+              "user-guide/agent-management",
+              "user-guide/model-providers"
+            ]
+          },
+          {
+            "group": "Projects and tracked work",
+            "pages": [
+              "user-guide/projects",
+              "user-guide/dashboard-board",
+              "user-guide/task-detail",
+              "user-guide/project-planning"
+            ]
+          },
+          {
+            "group": "Files and delivery",
+            "pages": [
+              "user-guide/delivery-files",
+              "user-guide/preview-review",
+              "user-guide/git-terminal",
+              "user-guide/google-drive-sync",
+              "user-guide/publish-apps"
+            ]
+          },
+          {
+            "group": "Workspace administration",
             "pages": [
               "user-guide/workspace-management",
-              "user-guide/agent-management",
-              "user-guide/dashboard-board",
-              "user-guide/chat-panel",
-              "user-guide/telegram-bind",
-              "user-guide/delivery-files"
+              "user-guide/members-permissions",
+              "user-guide/usage-analytics",
+              "user-guide/billing-plans",
+              "user-guide/settings-notifications"
+            ]
+          },
+          {
+            "group": "Feature overviews",
+            "pages": [
+              "user-guide/skills-wiki-desktop",
+              "user-guide/telegram-bind"
             ]
           },
           {

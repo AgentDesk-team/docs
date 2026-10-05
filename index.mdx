@@ -1,42 +1,48 @@
 ---
-title: "AgentDesk Documentation"
-description: "Learn how to use AgentDesk to work with AI agents, manage tasks, and review deliverables."
+title: "AgentDesk user guide"
+description: "Use agents, sessions, projects, work items, files, previews, and workspace administration."
 ---
 
-# AgentDesk Documentation
+# AgentDesk user guide
 
-AgentDesk is a workspace for working with a team of AI agents. It combines a task board, persistent team chat, workspace management, agent management, and delivery files in one place.
+AgentDesk brings AI agents, people, conversations, project work, and outputs into a shared workspace. Start in **Agent Chat**, organize tracked work in **Projects**, and review files and applications in **Files** or the workspace panel.
 
-<Note>
-This documentation is written for users and operators first. Team/developer context is included separately so new contributors can understand how to work safely with the current system.
-</Note>
+This guide follows the current React UI reviewed on **5 October 2026**. Available controls depend on your workspace plan, role, provider connections, and deployed release. A disabled or unavailable control is not permission to work around that restriction.
 
-## Start here
+## Start with a complete workflow
 
-<CardGroup cols={2}>
-  <Card title="Getting started" icon="rocket" href="/user-guide/getting-started">
-    Learn the AgentDesk workspace layout, status model, chat panel, and review flow.
-  </Card>
-  <Card title="Create and review your first task" icon="square-check" href="/user-guide/first-task">
-    Turn a request into an executable task, assign it, and verify the delivered output.
-  </Card>
-  <Card title="What a best-practice task looks like" icon="list-check" href="/user-guide/task-writing-best-practices">
-    See how the Agent Product Owner turns a rough request into a clear executable task.
-  </Card>
-  <Card title="Work with agents" icon="users" href="/user-guide/working-with-agents">
-    Understand how to choose agents, send messages, and avoid context confusion.
-  </Card>
-</CardGroup>
+1. [Sign in and set up your workspace](/user-guide/getting-started).
+2. [Choose an agent](/user-guide/working-with-agents) and [start a session in the right scope](/user-guide/sessions-privacy).
+3. [Create a project](/user-guide/projects) or use General for suitable existing work.
+4. [Create, approve, and track a work item](/user-guide/first-task).
+5. [Review the result and its evidence](/user-guide/task-detail), then accept it or request changes.
 
-## What AgentDesk helps you do
+## Find the feature you need
 
-- Brief work in plain language.
-- Shape unclear requests into tasks with clear outcomes.
-- Track work on a dashboard board.
-- Talk to the right agent in a persistent chat panel.
-- Review outputs and evidence in artifacts and delivery files.
-- Keep each user workspace isolated from other users.
+| Goal | Guide |
+| --- | --- |
+| Talk to agents, attach context, choose model settings, stop or queue messages | [Agent Chat](/user-guide/chat-panel) |
+| Find sessions, manage visibility, and understand project binding | [Sessions and privacy](/user-guide/sessions-privacy) |
+| Create agents, change profiles, manage context, pause and resume | [Agent management](/user-guide/agent-management) |
+| Create projects and maintain shared project instructions | [Projects](/user-guide/projects) |
+| Search, filter, group, export, and save work item views | [Work Items and views](/user-guide/dashboard-board) |
+| Review task details, assignments, dependencies, checklist, comments, and execution | [Task Detail](/user-guide/task-detail) |
+| Plan incoming work, delivery periods, and milestones | [Intake, Cycles, and Modules](/user-guide/project-planning) |
+| Browse, upload, organize, preview, edit supported files, and download outputs | [Files and deliveries](/user-guide/delivery-files) |
+| Review an image or running application and give feedback | [Preview and review](/user-guide/preview-review) |
+| Review source changes, use Git, or run a terminal command | [Git and terminal](/user-guide/git-terminal) |
+| Connect Google Drive and synchronize selected folders | [Google Drive sync](/user-guide/google-drive-sync) |
+| Publish a static application and update or unpublish it | [Publish apps](/user-guide/publish-apps) |
+| Connect model providers and manage workspace or agent defaults | [Model providers](/user-guide/model-providers) |
+| Invite members and understand roles and session access | [Members and permissions](/user-guide/members-permissions) |
+| Read token usage, provider allowance, and analytics | [Usage and analytics](/user-guide/usage-analytics) |
+| Review your plan, seats, checkout, and access recovery | [Billing and plans](/user-guide/billing-plans) |
+| Change preferences and review notifications | [Settings and notifications](/user-guide/settings-notifications) |
+| Inspect runtime health, audit, and workspace controls | [Workspace management](/user-guide/workspace-management) |
+| Understand skills, Wiki, and Desktop at a high level | [Skills, Wiki, and Desktop](/user-guide/skills-wiki-desktop) |
 
-## Current documentation status
+## Work, conversation, and evidence
 
-This is the Mintlify-ready documentation source for AgentDesk. User-facing docs should be maintained here and published through the canonical GitHub docs repository.
+A **session** holds a conversation with an agent. A **project** supplies a stable scope for related work and files. A **work item** tracks an outcome, its responsibility, and its lifecycle. A **delivery** is the result you review; **proof** shows how it was verified.
+
+Chat can also handle direct requests without creating a tracked task. Ask explicitly for a work item when you need lifecycle tracking. Creating a task and approving its execution are separate actions.

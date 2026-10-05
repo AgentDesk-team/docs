@@ -1,0 +1,55 @@
+---
+title: "Model providers"
+description: "Connect providers and manage workspace, agent, and session model settings."
+---
+
+# Model providers
+
+Open **Model Providers** from workspace administration. The page shows connected providers, the workspace default, agent overrides, and model-policy application status.
+
+AgentDesk account sign-in does not automatically connect your model account.
+
+## Connect ChatGPT
+
+1. Choose **Connect with ChatGPT**.
+2. Continue in the browser to sign in and authorize the intended account.
+3. Return to AgentDesk and finish the offered connection step.
+4. Check the saved account/connection state and available models.
+
+If the flow expires, start a new connection rather than reusing an expired authorization. **Reconnect** refreshes a connection; **Switch account** changes the account through a new sign-in flow.
+
+Where offered, **Check usage** opens provider allowance information. Provider allowance is distinct from your AgentDesk workspace subscription.
+
+## Connect API-key providers
+
+Use the provider's **Connect** action, or **Add Other Providers** for another supported provider. Enter the requested key and connection details in the protected form.
+
+Available providers can include OpenAI-compatible services and native providers such as Gemini or Claude, plus supported gateways. The live catalog is authoritative; models and provider names can change.
+
+For a custom provider, review its name/identifier, API base URL, key, and model entries as offered. Do not post keys in chat, comments, screenshots, or task files.
+
+Check that the connection is usable and its models are available. A credential being saved is not proof that a request can run.
+
+## Set defaults and overrides
+
+| Level | Applies to |
+| --- | --- |
+| **Workspace default** | Agents that inherit the default. |
+| **Agent override** | A named agent's model and thinking preference. |
+| **Session choice** | That conversation's verified setting for the next turn. |
+
+Choose a model and supported thinking level, then **Apply**. Use **Reset** to return an agent override to inheritance.
+
+**Apply to all agents** can replace custom overrides; review the confirmation listing the affected agents. Inspect the operation status while active sessions reconcile. If you see Applying, Failed, Unavailable, or Drift, check the result or use the offered policy retry.
+
+An ongoing response retains its starting settings. Use the effective model shown in chat for the next turn rather than assuming every running session changed immediately.
+
+## Remove a provider
+
+Review the removal confirmation: its models will no longer be available in the workspace. Consider any default or override using those models first.
+
+If removal is still reconciling, follow the reported retry guidance. Do not treat an incomplete removal as a fully disconnected runtime.
+
+## Session thinking and Fast mode
+
+Use the chat's **Model & thinking** control for conversation preferences. Thinking options and Fast support depend on the selected model. Fast may consume provider limits more quickly; review [Usage](/user-guide/usage-analytics) when needed.

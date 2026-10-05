@@ -1,81 +1,54 @@
 ---
-title: "Workspace Management"
-description: "Manage your AgentDesk workspace, settings, agents, connections, and files."
+title: "Workspace management"
+description: "Find administration surfaces, inspect health and audit, and understand sensitive workspace controls."
 ---
 
-# Workspace Management
+# Workspace management
 
-Workspace Management is where you manage your AgentDesk workspace beyond day-to-day chat and task handling.
+A workspace owns its agents, project/task records, sessions, files, connections, entitlements, and runtime. Administrative controls are available according to your role.
 
-## What a workspace contains
+## Administration map
 
-A workspace contains your:
-
-- Dashboard tasks and subtasks.
-- Agent roster and settings.
-- Chat attachments and workspace files.
-- Artifacts and evidence.
-- Delivery files.
-- Runtime status and activity logs.
-
-## First-time workspace initialization
-
-If you are a new user, AgentDesk may show that your workspace is not initialized yet. Use the **Init Workspace** action to create your workspace.
-
-<Note>
-Workspace initialization is explicit. AgentDesk should not silently route a normal user into another user's private workspace.
-</Note>
-
-## Common management areas
-
-| Area | What it does |
+| Area | Purpose |
 | --- | --- |
-| **Overview** | Shows workspace status and key links. |
-| **Agents** | Create, edit, disable, or review agents. |
-| **Connections** | Connect workspace-level providers or services that agents depend on. |
-| **Settings** | Workspace-level settings and metadata. |
-| **Audit / Status** | Review important events and health information. |
-| **Delivery Files** | Manage files produced for you. |
-| **Danger Zone** | Destructive or sensitive actions that require care. |
+| **Agents in Agent Chat** | Profiles, context files, model overrides, availability. |
+| **Model Providers** | Provider connections and workspace/agent model policy. |
+| **People / Members** | Membership, invitations, roles, and groups. |
+| **Usage** | Token activity, estimates, reported costs, and provider allowance. |
+| **Analytics** | Reported workspace participation and usage telemetry. |
+| **Billing** | Plan, seats, checkout, portal, and access recovery. |
+| **Workspace settings** | Runtime status, audit, and permitted maintenance controls. |
+| **Environments** | Read-only environment/port/deployment ownership when enabled. |
+| **Skills** | Reusable capability management, covered at a high level. |
 
-## Connections
+## Inspect before acting
 
-Connections is where you set up external services that some workflows depend on.
+Review current workspace identity, runtime readiness, health, available concurrency, recent audit, and any current operation. Some controls are restricted to platform operators or only offered in a supported runtime.
 
-Examples may include:
+**Max active tasks per agent** limits live task assignments held by one agent. **Max runtime runs per workspace** limits simultaneous agent runs across agents and chats. Change the intended field within its displayed bounds and use its Save control. Increasing a task limit can increase runtime queueing; it does not create more provider capacity.
 
-- model or provider access,
-- search providers,
-- design/content providers,
-- messaging or channel integrations.
+## Runtime and maintenance
 
-What matters from a user perspective:
+Where available, **Restart workspace Gateway** is a maintenance action on the agent runtime. Inspect active work and review the confirmation before using it. Afterward, check readiness and the affected feature.
 
-- A connection can be required before an agent can complete certain work.
-- A saved credential is not always the same as a fully working runtime connection.
-- If a provider shows attention needed, pending setup, or similar status, treat that as setup still in progress.
+Dashboard or development-server restart controls are deployment/operator-specific. They are not a universal recovery step for normal users, and a restart should not be the first response to a missing file or an unapproved task.
 
-<Note>
-If a workflow depends on an external service and the connection is incomplete, the task may remain waiting or blocked until setup is finished.
-</Note>
+A source update, provider save, runtime activation, and working feature are separate outcomes. Check the relevant status after a change.
 
-## Files: artifacts vs deliveries
+## Audit and environments
 
-Workspace Management may surface file areas indirectly through tasks, reviews, or linked paths.
+**Support trail** lists recent workspace provisioning and support events. Expand event details or use **Export debug snapshot** when offered to assemble support information. Audit records help identify who changed settings and when. Review exported material before sharing it and exclude secrets from notes or support reports.
 
-| Type | Use for |
-| --- | --- |
-| **Artifacts** | Internal proof such as screenshots, traces, logs, and test output. |
-| **Deliveries** | Final outputs meant for review, download, or handoff. |
+**Environments** shows read-only task/worktree/branch truth, port ownership, capacity, waiting work, and deployments. It can remain unavailable until the registry accuracy gate is enabled. Viewing an environment does not authorize deployment or runtime changes.
 
-Use this distinction when reviewing work:
+## Dangerous actions
 
-- Check **artifacts** when you want proof.
-- Check **deliveries** when you want the final result.
+Workspace deletion and other destructive controls require their explicit confirmation and authorized access. Inspect the exact workspace and understand the affected data before continuing.
 
-## Safety expectations
+Deletion is separate from archiving a project, pausing an agent, or removing an attachment reference. Use the smallest action that matches your intent.
 
-- You should only see workspaces you own or are authorized to access.
-- Disabled agents should not be used for new work.
-- Workspace deletion or disable actions should require clear confirmation.
-- Delivery files should stay inside your workspace delivery folder.
+## Platform administration
+
+Platform Admin is restricted to platform-authorized accounts; workspace ownership alone does not grant it. Its operational controls are not ordinary user setup steps.
+
+For routine administration, use the guides linked above rather than operator routes or internal configuration edits.

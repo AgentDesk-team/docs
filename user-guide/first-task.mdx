@@ -1,174 +1,58 @@
 ---
 title: "Create and review your first task"
-description: "Turn a request into a clear AgentDesk task, assign it to the right agent, and verify the delivered output."
+description: "Create through chat or Work Items, review the brief, approve execution, and verify the result."
 ---
 
 # Create and review your first task
 
-Use this guide after you understand the basic onboarding flow in [Getting started](/user-guide/getting-started). This page focuses on creating a real task that an agent can execute and you can review with confidence.
+## Create the work item
 
-## Start with a real request
+You can create a task through an agent conversation or directly in **Projects → Work Items → Add work item**. **Add intake item** also starts incoming work in the project's Intake flow.
 
-In the current AgentDesk product, create tasks through chat with an agent. Direct task creation from the board is not the supported user flow yet.
-
-Prefer using the **Agent Product Owner** for task creation and task shaping. You do not need to define every detail yourself upfront.
-
-Even if you are not sure what the exact requirement should be yet, you can start a conversation with the Agent Product Owner. The agent can help you explore the problem, narrow the goal, identify missing decisions, and turn an unclear idea into a task that is ready for review.
-
-Start with a practical request like:
+For a rough request, begin with the Product Owner or another suitable agent:
 
 ```text
-Create a task for improving the new-user onboarding flow.
+Create a task in this project to improve our onboarding explanation.
+Define scope, expected output, acceptance criteria, and verification.
+Keep it in Inbox for my review.
 ```
 
-Then continue the conversation with the Agent Product Owner. The agent can help analyze the request, ask clarifying questions, define the scope, design the approach, and create a detailed plan for the task.
+Use a session bound to the intended project. A common workspace conversation without a project uses the legacy General project for newly created tasks.
 
-For example:
+For direct creation, select the intended project, enter the title and offered fields, and check the created item in Task Detail. New work begins in **Inbox**. Creation does not approve execution or create an active agent assignment.
 
-```text
-Please analyze what this task needs, define clear scope and out-of-scope, propose acceptance criteria and verification, then keep it in Inbox for my review.
-```
+## Review the brief
 
-or:
+Check the goal, description, owner, assignee, scope, acceptance criteria, dates, dependencies, and Task Files. If the task is vague, ask the agent to refine it before execution.
 
-```text
-I want to execute this task soon. Please define it briefly, recommend the right agent, and propose moving it to Ready for my confirmation.
-```
+A small useful task might be: “Write a two-page onboarding guide using the attached screenshots, publishable as HTML and PDF, with reviewed links and no product changes.”
 
-<Note>
-See [What a best-practice task looks like](/user-guide/task-writing-best-practices) for what the task should look like after the Product Owner agent finishes clarifying and defining it.
-</Note>
+The [task-writing guide](/user-guide/task-writing-best-practices) shows a fuller brief.
 
-After the agent creates or drafts the task, open Task Detail and check that it has:
+## Assign and approve
 
-| Field | What to check |
-| --- | --- |
-| Title | Short and action-oriented. |
-| Summary | Explains the outcome, not only activity. |
-| Status | Usually starts in **Inbox** unless you explicitly approved execution. |
-| Owner / executor | The right agent or person is responsible. |
-| Next action | One concrete next step. |
-| Acceptance criteria | Observable pass/fail checks. |
-| Related files | Specs, screenshots, examples, or source links. |
+Choose the appropriate assignee. The current task supports a single assignee. When the task is clear enough, approve it by moving it to **Ready** through the permitted control or a later explicit approval request.
 
-## Move the task to Ready
+Ready can trigger automatic dispatch when the executor and prerequisites are available. If you only want further planning, keep the task in Inbox.
 
-Move a task to **Ready** only when it is clear enough to execute.
+Creating a task, approving its execution, and authorizing external or destructive actions are separate decisions.
 
-<Note>
-**Ready** means the task can be picked up for execution. It does not mean the task is done.
-</Note>
+## Follow execution
 
-Before moving to Ready, ask:
+Open Task Detail and review **Current execution**, latest updates, lifecycle, checklist, and next action. **Open session** takes you to the running agent's conversation. Earlier runs remain in Execution history.
 
-- Is the goal clear?
-- Is the expected output clear?
-- Is the scope small enough?
-- Are acceptance criteria testable?
-- Is there a named verification method?
-- Is the right agent assigned?
+If the task is Waiting, supply the required input. If it is Blocked, resolve the recorded obstacle. If you intentionally postpone it, use Paused. Follow allowed lifecycle transitions rather than trying to assign an already-running task to a different executor.
 
-If the answer is no, keep the task in **Inbox** and ask for clarification/spec first.
+## Review and complete
 
-## Assign the right agent
+1. Read the acceptance criteria.
+2. Open Deliveries and inspect the actual result.
+3. Open Proofs and review the verification.
+4. Compare result and proof against each criterion.
+5. Accept the task using the permitted completion flow, or provide precise feedback and reopen it.
 
-Pick the agent whose role matches the task.
+Agent completion requires official proof. An authorized user can use the supported proof-waiver option, which is recorded in task history. A finished response or checked checklist alone is insufficient.
 
-Examples:
+For follow-up changes to Done work, use **Reopen** and choose an allowed state. Use **Archived** for historical retention when the task no longer belongs in active work.
 
-| Task type | Good agent fit |
-| --- | --- |
-| Product requirements, task shaping | Product / PO assistant |
-| UI design and interaction flow | Designer / UIUX |
-| Frontend implementation | FE Dev |
-| Backend/API/data logic | BE Dev |
-| Architecture or cross-system design | Solution Architect |
-| QA, proof, regression checks | QA / verification agent |
-| Docs and user guides | Product/docs-capable agent |
-
-If the task crosses roles, split it or ask one agent to produce a spec first.
-
-## Track execution
-
-While the agent works, use the board as source of truth.
-
-Common statuses:
-
-| Status | Meaning |
-| --- | --- |
-| **Inbox** | Request exists but needs shaping or approval. |
-| **Ready** | Clear and allowed to start. |
-| **Agent working** | An agent is actively executing. |
-| **Waiting on you** | The agent needs your input or decision. |
-| **Blocked** | Work cannot continue safely. |
-| **Ready to review** | Output/evidence exists and needs review. |
-| **Done / Closed** | Reviewed and accepted. |
-
-<Warning>
-A chat message saying "done" is not enough. Check the task status, linked evidence, and output files.
-</Warning>
-
-## Review the output
-
-When the task is ready to review:
-
-1. Open the task from the board.
-2. Read the latest update and next action.
-3. Open linked artifacts, delivery files, screenshots, or public URLs.
-4. Compare the output against the acceptance criteria.
-5. Check the verification evidence.
-6. If it passes, approve/close the task.
-7. If it fails, reopen or add feedback with the exact issue.
-
-## What good proof looks like
-
-Proof depends on the task type:
-
-| Work type | Good proof |
-| --- | --- |
-| UI behavior | Playwright/browser E2E plus screenshot. |
-| API/backend | Tests plus request/response evidence. |
-| Docs | Public docs path, commit hash, and validation result. |
-| Data/report | Source files, method, and generated output. |
-| Live integration | Exact account/profile/environment and observed result. |
-
-## When to ask for a spec first
-
-Ask for analysis/spec before execution when:
-
-- the requirement is vague,
-- the task affects public API or architecture,
-- the work has security/privacy risk,
-- success criteria are unclear,
-- multiple agents/teams will be involved,
-- the output may be expensive to rework.
-
-Example:
-
-```text
-Analyze this feature and write a short spec with scope, out-of-scope, acceptance criteria, risks, and verification plan. Do not implement until I approve.
-```
-
-## Quick checklist
-
-Before assigning a task:
-
-- [ ] Goal is clear.
-- [ ] Scope is bounded.
-- [ ] Out-of-scope is stated.
-- [ ] Expected output is named.
-- [ ] Acceptance criteria are testable.
-- [ ] Verification method is explicit.
-- [ ] Correct agent is assigned.
-- [ ] Task is small enough to finish and review.
-
-## Next steps
-
-<CardGroup cols={2}>
-  <Card title="What a best-practice task looks like" icon="list-check" href="/user-guide/task-writing-best-practices">
-    See the final shape of a well-defined task after the Product Owner agent clarifies it with you.
-  </Card>
-  <Card title="Dashboard board" icon="table-columns" href="/user-guide/dashboard-board">
-    Learn how to track status, blockers, next actions, and review state.
-  </Card>
-</CardGroup>
+See [Task Detail](/user-guide/task-detail) for attachment buckets, comments, and execution history.

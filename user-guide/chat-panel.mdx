@@ -1,55 +1,54 @@
 ---
-title: "Chat Panel"
-description: "Use the AgentDesk chat panel to talk to agents and shape work."
+title: "Agent Chat"
+description: "Send requests, add context, control model settings, and review agent work beside the workspace panel."
 ---
 
-# Chat Panel
+# Agent Chat
 
-The chat panel lets you talk to the selected agent while keeping the board visible.
+Use Agent Chat to work with a selected agent. The left side organizes agents and sessions; the conversation shows requests, replies, activity, and linked outputs. The workspace panel lets you inspect material beside the conversation.
 
-## What you can send
+## Start and send
 
-- Text messages.
-- File attachments.
-- Pasted images.
-- Clarifications or review notes.
+1. Select an agent.
+2. Open an existing session or choose **New Session**.
+3. For a new session, choose its project binding and private mode before sending.
+4. Type the request, attach source material, and send.
+5. Read the agent's response and open relevant work items or files.
 
-## Best practices
+Existing sessions keep their project binding. Changing the project filter in the session list changes what you see; it does not rebind an existing conversation. See [Sessions and privacy](/user-guide/sessions-privacy).
 
-- Select the right agent before sending.
-- Include the task id when referring to existing work.
-- Attach files when the agent needs exact source material.
-- Ask the agent to create or update a task when the conversation becomes executable work.
-- Ask for evidence when the agent claims completion.
+## Add context and attachments
 
-## Attachments
+Upload files, paste an image, or use **Context** to find a project, work item, document, agent, workspace member, web URL, goal, or available skill reference. Selected context appears as chips before you send; remove an incorrect chip before submitting.
 
-Attachments should be delivered to the mapped agent session, not only displayed locally in chat. If an agent cannot see a file, resend it or attach it to the task/delivery area.
+Context references help identify the source. They do not grant access to an inaccessible item or authorize execution. Use the actual task ID or file link when precision matters.
 
-## Reviewing longer conversations
+Open a file link or work item card in a reply to review it in the workspace panel. Use **Open full page** or **Go to Task** when you need the complete detail.
 
-For longer work threads, the Chat Panel may let you load older messages instead of showing only the latest exchange.
+## Model, thinking, and speed
 
-Use the board and task detail together with chat when you need the full picture:
+**Model & thinking** shows the effective model and where the setting comes from: the workspace, agent, or session. Choose from the models available to your workspace.
 
-- chat for conversation,
-- board for task state,
-- artifacts/deliveries for proof and output.
+Thinking levels vary by model. For models that support it, **Fast mode** can reduce response time and use more provider allowance. Unsupported models use Normal speed.
 
-## File links in chat
+A saved change applies to the next turn. A response already running keeps the settings with which it started. If verification fails, read the error instead of assuming the new choice is active. On smaller screens, open **More composer controls**.
 
-Some chat replies may include clickable workspace paths or output links.
+Provider connections and defaults are covered in [Model providers](/user-guide/model-providers).
 
-Use them as shortcuts to:
+## While an agent responds
 
-- open a delivery,
-- inspect a generated file,
-- jump to proof or supporting material.
+Activity entries can show planning, file work, tests, browser work, and other steps. Expand relevant activity or work summaries when you need context.
 
-If the link looks important, still verify the related task state on the board before treating the work as complete.
+Use **Stop** to interrupt the current response. When **Queue** is offered, queue a follow-up to send after the current response; review queued messages and attachments before they run. An interrupted turn does not automatically complete its task.
 
-## Chat is not enough
+A model's activity summary is useful progress information. Verify the linked output and Task Detail before accepting tracked work as Done.
 
-<Warning>
-A chat answer is not the same as a completed task. For important work, check the board status and linked evidence or delivery files.
-</Warning>
+## Clipboard history and navigation
+
+**Clipboard history** keeps the latest supported text items copied or cut in the Dashboard for the current chat. Select an item to reuse it. It is scoped to that conversation and is not a view of your operating system's entire clipboard.
+
+Where offered, use message navigation and bookmarks to return to important parts of a long conversation. Session search finds conversations; context search finds workspace entities.
+
+## Read-only sessions
+
+A session your role can read may still be read-only. AgentDesk displays this state and disables sending or message changes. Open an owned permitted session when you need to continue work.

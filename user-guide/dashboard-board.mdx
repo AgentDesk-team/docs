@@ -1,76 +1,63 @@
 ---
-title: "Dashboard Board"
-description: "Understand task status, activity, runtime, notes, and evidence on the board."
+title: "Work Items and views"
+description: "Use List, Board, Calendar, Table, and Gantt layouts with filters, saved views, export, and analytics."
 ---
 
-# Dashboard Board
+# Work Items and views
 
-The board is the main place to understand work state. It is stronger than chat history for determining whether work is waiting, active, blocked, or done.
+Open **Projects**, choose a project, and open **Work Items**. Each item represents a tracked AgentDesk task. You can create an item directly with **Add work item**, or ask an agent to create one from a conversation.
 
-## What a task should show
+## Choose a layout
 
-A useful task usually includes:
-
-- Title.
-- Status.
-- Assignee or responsible agent.
-- Priority.
-- Summary or source request.
-- Acceptance criteria.
-- Next action.
-- Latest update.
-- Attachments, artifacts, or delivery links.
-
-## Common task states
-
-| Status | Meaning |
+| Layout | Use it for |
 | --- | --- |
-| **Inbox** | A request exists, but it is not ready to execute yet. It may still need shaping, clarification, or approval. |
-| **Drafting spec** | The work is being clarified into a more executable task shape. |
-| **Pending approval / Pending** | The task is waiting for a user or owner decision before execution should continue. |
-| **Ready** | The task is clear enough and allowed to start. |
-| **In progress / Agent working** | An agent is actively executing the task or subtask. |
-| **Waiting** | Work is paused because the task is waiting on input, another step, or an external dependency. |
-| **Blocked** | Work cannot continue safely until a real blocker is removed. |
-| **Ready to review** | Output or evidence exists and needs human review. |
-| **Done / Closed** | Reviewed and accepted. |
+| **List** | Scan tasks and grouped work. |
+| **Board** | Review work by status or another grouping. |
+| **Calendar** | See dated work. |
+| **Table** | Compare task properties in rows and columns. |
+| **Gantt** | Review scheduled work across time. |
 
-## Waiting vs blocked
+Layouts display the same work records. A layout change does not change task lifecycle. Dates must be recorded for scheduling views to be useful.
 
-This distinction matters:
+## Search, filter, and display
 
-- **Waiting** usually means the work can continue later after a decision, dependency, or reply.
-- **Blocked** means the work cannot safely proceed in its current state.
+Search by title or identifier. Use the filters for status, priority, assignee, Task Owner, reporter, label, and due-date range. Temporary filters change the current view.
 
-Examples:
+**Display** offers grouping and sub-grouping, visible properties, ordering, and direction. Available grouping includes status, priority, assignee, and label. Use **Clear temporary filters** or **Reset display** to remove choices you no longer need.
 
-- Waiting for your approval to move forward → usually **Pending approval** or **Waiting**.
-- Waiting for a dependency task to finish → usually **Waiting**.
-- Missing credentials, broken environment, or failed prerequisite → usually **Blocked**.
+Archived work is excluded from ordinary active views. Use **Show archived** or **Archives** when you need historical items.
 
-<Note>
-If a task is still in Inbox, Drafting spec, or Pending approval, do not assume the agent should already be executing it.
-</Note>
+## Save a view
 
-## Activity vs Runtime
+Open **Views**, choose **Add view** or **Create view**, name it, and save the offered filters and layout configuration. A private view is personal; a shared view can be used by permitted teammates.
 
-| Tab | Meaning |
+Search Views or filter by access to find one later. Only a view's owner can edit or delete it. Saved-view privacy controls the view definition; it does not grant access to tasks a viewer otherwise cannot see.
+
+## Export and custom properties
+
+Use **Export current view (.csv)** from the work item actions to export the current result set.
+
+Use **Custom properties** to define additional fields where permitted, then edit values in Task Detail. The current editor supports types including text, number, date, selection, multi-selection, checkbox, and URL. These fields help describe the work; they do not replace status, assignment, dependencies, or acceptance criteria.
+
+## Understand lifecycle
+
+| Status shown in the UI | Meaning |
 | --- | --- |
-| **Activity** | Human-visible updates, edits, notes, status changes, and review comments. |
-| **Runtime** | System/orchestration events, dispatches, active assignment updates, and automation details. |
+| **Inbox** | Created, awaiting review and execution approval. |
+| **Ready** | Approved and eligible to start; there is no active executor yet. |
+| **In Progress** | An active assignment is running. |
+| **Waiting** | Waiting for input, a dependency, review, provider, or planned time. |
+| **Blocked** | An obstacle must be resolved. |
+| **Paused** | Deliberately postponed. |
+| **Done** | Completed under the task's verification requirements. |
+| **Archived** | Retained as historical work. |
 
-Keeping these separate helps users understand what happened without mixing product updates with internal runtime noise.
+**Waiting** is the displayed label for the pending lifecycle. Older terms such as Drafting spec, Pending approval, and Ready to review are not separate current lifecycle states.
 
-## Notes
+Changing a task to Ready can make it eligible for automatic dispatch. Review scope and assignment before approving it. Only allowed transitions are offered; moving to In Progress requires an assignee and remains subject to server validation.
 
-Task notes can include safe Markdown. Avoid pasting secrets into notes.
+## Analytics
 
-## Evidence
+Open **Analytics** in Work Items to inspect totals, created versus resolved work, status distribution, and assignee workload for the current view. Filters affect this analysis. These project insights are distinct from workspace token usage and billing.
 
-Before accepting a task as done, look for the right proof:
-
-- Screenshot or browser proof for UI work.
-- Test output for code/API changes.
-- Delivery file for user-facing documents or assets.
-- Runtime/log evidence for orchestration behavior.
-- Clear blocker note if work cannot proceed.
+Open an item for [Task Detail](/user-guide/task-detail), or follow the [first-task walkthrough](/user-guide/first-task).

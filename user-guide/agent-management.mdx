@@ -1,39 +1,49 @@
 ---
-title: "Agent Management"
-description: "Create and manage agents safely."
+title: "Agent management"
+description: "Create agents and manage profiles, context, model settings, and availability from Agent Chat."
 ---
 
-# Agent Management
+# Agent management
 
-Agent Management lets you configure the AI teammates available inside your workspace.
+Manage agents from the **Agents** area in Agent Chat. The action menu beside an agent opens its profile, model settings, context files, and availability controls. Your role determines whether you can view or change them.
 
-## Role templates
+## Create an agent
 
-Agents are created from approved role templates. A role template defines the agent's intended purpose, such as product assistant, backend developer, frontend developer, designer, QA, or DevOps.
+1. Open Agent Chat and choose **Create agent**.
+2. Select an available role template.
+3. Enter a recognizable display name and configure the offered profile options.
+4. Choose or customize an avatar if needed.
+5. Confirm creation and wait for setup.
 
-<Warning>
-An agent's role should not be casually changed after creation. If you need a different role, create a new agent from the correct template.
-</Warning>
+The role is fixed after creation. Create a different agent when you need a different role.
 
-## Common actions
+If an agent shows **Setup failed**, review the error and use **Retry setup** when offered. A profile appearing in the list does not by itself prove setup completed.
 
-| Action | What it means |
-| --- | --- |
-| **Create agent** | Add a new agent from an approved role template. |
-| **Edit display details** | Update display name or safe metadata. |
-| **Disable agent** | Stop using an agent without permanently deleting its history. |
-| **Review agent status** | Check whether the agent is enabled and routable. |
+## Edit the profile
 
-## Good agent setup
+Open the agent action menu and choose **Edit profile**. Update the display name or avatar, then save. With read-only access, the menu may offer **View profile** instead.
 
-A useful agent should have:
+Profile model settings can inherit the workspace default or use an agent-specific override. See [Model providers](/user-guide/model-providers) for inheritance, thinking level, and application status.
 
-- A clear role.
-- A recognizable display name.
-- A safe template/persona.
-- Correct workspace context.
-- A valid session/contact mapping.
+## Manage context
 
-## When to add a new agent
+Choose **Manage contexts** to inspect the context files available for that agent.
 
-Add an agent when the work requires a stable role or repeated responsibility. Do not create a new agent for every small one-off request.
+1. Select a file and read its purpose.
+2. Make the intended change if your role permits editing.
+3. Save and check the result.
+4. If needed, use the available restore-from-template action and review what it replaces.
+
+Some files are also maintained by the agent. Read the current content before editing, especially when several people or the agent may change it. Unsaved changes trigger a discard prompt when you close the editor.
+
+Keep project-specific shared instructions in [PROJECT.md](/user-guide/projects), rather than copying them into every agent profile. Context files are distinct from the agent's skills.
+
+## Pause and resume
+
+Choose **Pause agent** and confirm when the agent should be unavailable for new work. Paused agents appear in the paused section; use **Resume agent** to make one available again.
+
+Pausing an agent is an availability action. To control a running task, also inspect its lifecycle and current execution. Do not assume that hiding or pausing an agent has transferred its task to someone else.
+
+## Skills
+
+**Manage skills** opens the agent's skill surface. Skills provide reusable capabilities and instructions. This guide keeps skill management at a [high level](/user-guide/skills-wiki-desktop) while that workflow evolves.
