@@ -1,0 +1,41 @@
+---
+title: "Publish apps"
+description: "Publish a supported static folder, review its public URL, and update or unpublish it."
+---
+
+# Publish apps
+
+**Publish app** turns a supported static application folder in WS Files into an immutable public release. Use it for an HTML-based output you intend other people to view.
+
+A running development server or live preview is not automatically a published app.
+
+## Prepare the folder
+
+Place the publishable HTML and its assets in the intended source folder. The folder must have **index.html** at its root. The publishing workflow validates the source and rejects protected content such as secrets and unsupported symlinks.
+
+Choose a public output folder rather than a private project root containing credentials or unrelated working files. A server-side application needs its own supported hosting workflow; static publishing does not deploy its backend.
+
+## Publish
+
+1. Open the source folder's offered **Publish app** action in Files.
+2. Review **Source folder**, **Public slug**, and **App ID**.
+3. Use a valid app ID with lowercase letters, numbers, and hyphens.
+4. Confirm publication.
+5. Wait for the result and open the returned public URL.
+6. Check the visible content and linked assets as a visitor.
+
+Publication requires the permitted Apps write capability and a supported workspace target. An authorization or validation error should be resolved before trying again.
+
+## Update a release
+
+Use **Publish app update** for the existing app. Review the source before replacing the published version. The update can retain the public URL while creating a new immutable release.
+
+Edits to the working folder do not change the published release until you publish an update.
+
+## Unpublish
+
+Use **Unpublish** from the app's publishing controls when the public app should no longer be served. Confirm the intended app. This is separate from deleting the working source folder.
+
+## Preview, test, and publish
+
+Use [Live Preview](/user-guide/preview-review) for iteration and review, Browser Test for requested interaction evidence, and Publish app for public delivery. Verify the actual public URL after publishing; a successful local preview cannot verify the public release.

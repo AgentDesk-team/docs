@@ -1,175 +1,60 @@
 ---
 title: "Getting started"
-description: "A first-run orientation for using AgentDesk safely and understanding the main workspace areas."
+description: "Sign in, complete onboarding, and learn the current AgentDesk workspace."
 ---
 
-# Getting started with AgentDesk
+# Getting started
 
-This guide gives you the shortest path to understand AgentDesk: initialize your workspace, learn the dashboard layout, talk to an agent, and review outputs safely.
+## Sign in or create an account
 
-If you already know the basics and want to create executable work, go to [Create and review your first task](/user-guide/first-task).
+Use the email sign-in flow, or an available Google or Facebook sign-in button. Social sign-in depends on the services enabled for your deployment.
 
-## What AgentDesk is
+For an email account, choose sign-up if you are new, complete any required email verification, and use **Forgot password** if you cannot sign in. Choose English or Vietnamese from the language selector. Signing into AgentDesk and connecting a model provider are separate steps.
 
-AgentDesk is a workspace for working with AI agents.
+## Complete onboarding
 
-It combines:
+The first-run flow collects your profile, role, use cases, and workspace choice.
 
-- a task board,
-- a persistent chat panel,
-- agent management,
-- workspace files and delivery outputs,
-- evidence and review workflows.
+1. Enter the name you want agents and teammates to use.
+2. Choose your role and intended uses.
+3. Enter a workspace name and available workspace identifier, or review an invitation offered to your account.
+4. Initialize the workspace and wait for setup to finish.
+5. Continue into AgentDesk when the workspace is ready.
 
-The goal is not just to chat. The goal is to turn work into clear tasks, let the right agent execute them, and review the output with proof.
+Initialization can take time while agents and the workspace runtime are prepared. If you reload, return to the saved onboarding step and current initialization status. If setup reports a retryable failure, use the displayed retry action.
 
-## First-run flow
+The initial onboarding flow currently omits the outbound teammate-invitation step. Invite people later from **People**, subject to your plan and permissions.
 
-<Steps>
-  <Step title="Initialize your workspace">
-    Create your private AgentDesk workspace so your tasks, agents, files, and outputs are isolated from other users.
-  </Step>
-  <Step title="Introduce yourself">
-    Add basic profile/context so agents know who they are helping and how to communicate.
-  </Step>
-  <Step title="Open the dashboard">
-    Learn the board, Chat Panel, Task Detail, Workspace Management, and Delivery Files areas.
-  </Step>
-  <Step title="Talk to an agent">
-    Use the Chat Panel for questions, task shaping, review notes, and follow-up instructions.
-  </Step>
-  <Step title="Review work on the board">
-    Use task status, next action, blockers, and linked evidence as source of truth.
-  </Step>
-  <Step title="Open outputs and give feedback">
-    Review artifacts or delivery files, then approve, ask for changes, or report an issue.
-  </Step>
-</Steps>
+## Take the product tour
 
-## Step 1 — Initialize your workspace
+The tour introduces Agent Chat, Agents, Sessions, Projects, Work Items, Files, available Wiki access, and Settings. You can continue, skip, or replay the tour using the available tour control. Skipping the tour does not remove your workspace.
 
-When you sign in for the first time, AgentDesk may show that your workspace is not initialized yet.
+Cherry, the AgentDesk assistant, can help you choose the next step. Ask a practical question such as:
 
-Click **Init Workspace**.
+```text
+Help me organize a project for researching our next product launch.
+Explain which agent I should use and what information you need.
+```
 
-Your workspace contains your:
+No sample task is required to complete onboarding.
 
-- Dashboard tasks and subtasks.
-- Agents.
-- Chat history and attachments.
-- Artifacts and delivery files.
-- Runtime status and activity logs.
+## Understand the workspace layout
 
-<Note>
-Workspace initialization is explicit. AgentDesk should not silently put a normal user into another user's private workspace.
-</Note>
-
-## Step 2 — Introduce yourself
-
-After initialization, AgentDesk may ask you to enter basic information about yourself.
-
-Keep it short at first. You can improve it later.
-
-Useful fields include:
-
-| Field | Example |
+| Area | Purpose |
 | --- | --- |
-| Name | Your name or preferred display name. |
-| Role | Founder, product manager, developer, designer, operator, student, etc. |
-| Goal | What you want to use AgentDesk for. |
-| Context | Your project, company, product, or team context. |
-| Preference | How you want agents to communicate or help you. |
+| **Agent Chat** | Talk with a selected agent and revisit sessions. |
+| **Projects** | Organize Work Items, planning, saved views, and project context. |
+| **Files** | Browse shared workspace files, review outputs, sync selected folders, and publish supported apps. |
+| **Workspace panel** | Open files, task previews, source changes, terminal, and application previews beside chat. |
+| **Wiki** | Workspace knowledge, when included in your plan. |
+| **Desktop** | The workspace's remote desktop surface, when available. |
+| **Settings** | Account preferences and permitted workspace administration. |
+| **Notifications** | Follow task activity and comments you can access. |
 
-This context helps agents respond with better assumptions and tone.
+On narrow screens, open the navigation drawer to switch areas. The chat composer also groups some controls under **More composer controls**.
 
-## Step 3 — Open the dashboard
+## Before your first request
 
-The Dashboard is the main operating surface.
+Check the active workspace, agent, project binding, session visibility, and connected model. Upload source material or use context references when exact files or work items matter.
 
-| Area | What it is for |
-| --- | --- |
-| **Board** | Track tasks, statuses, blockers, next actions, and outcomes. |
-| **Chat Panel** | Talk to the selected agent. |
-| **Task Detail** | Review scope, notes, activity, outputs, and evidence. |
-| **Workspace Management** | Manage agents, workspace settings, connections, and files. |
-| **Delivery Files** | Access official outputs or user-facing deliverables. |
-
-<Warning>
-Chat is not the final source of truth. For important work, check the board status and linked evidence or delivery files.
-</Warning>
-
-## Step 4 — Understand task status
-
-Common board statuses:
-
-| Status | Meaning |
-| --- | --- |
-| **Inbox** | Request exists but needs shaping or approval. |
-| **Ready** | Clear and allowed to start. |
-| **Agent working** | An agent is actively executing. |
-| **Waiting on you** | The agent needs your input or decision. |
-| **Blocked** | Work cannot continue safely. |
-| **Ready to review** | Output/evidence exists and needs review. |
-| **Done / Closed** | Reviewed and accepted. |
-
-<Note>
-**Ready** means the task can be picked up for execution. It does not mean the task is already finished.
-</Note>
-
-## Step 5 — Talk to an agent
-
-Use the Chat Panel when you want to:
-
-- ask a question,
-- clarify a task,
-- request a task update,
-- attach files or screenshots,
-- ask for evidence,
-- give feedback after reviewing output.
-
-Best practices:
-
-- Select the right agent before sending.
-- Include the task id when discussing existing work.
-- Be explicit about expected output and verification.
-- Ask the agent to create a task if the conversation becomes executable work.
-
-## Step 6 — Review outputs
-
-When work is ready to review:
-
-1. Open the task from the board.
-2. Read the latest update and next action.
-3. Open linked outputs, artifacts, screenshots, traces, or delivery files.
-4. Compare the result with acceptance criteria.
-5. Approve/close if it passes, or add exact feedback if it does not.
-
-For public or shareable outputs, use **Delivery Files** or the relevant public link flow.
-
-## What success looks like
-
-You have completed the basic orientation when:
-
-- Your workspace is initialized.
-- Your profile/context is entered.
-- You can find the board, Chat Panel, Task Detail, Workspace Management, and Delivery Files.
-- You understand the difference between chat replies and task truth.
-- You understand that Ready means executable, not done.
-- You know where to review outputs and evidence.
-
-## Next steps
-
-<CardGroup cols={2}>
-  <Card title="Create and review your first task" icon="square-check" href="/user-guide/first-task">
-    Turn a request into clear work that an agent can execute and you can verify.
-  </Card>
-  <Card title="What a best-practice task looks like" icon="list-check" href="/user-guide/task-writing-best-practices">
-    See how a rough request becomes a clear executable task with help from the Agent Product Owner.
-  </Card>
-  <Card title="Working with agents" icon="users" href="/user-guide/working-with-agents">
-    Learn how to choose the right agent and keep conversations clear.
-  </Card>
-  <Card title="Dashboard board" icon="table-columns" href="/user-guide/dashboard-board">
-    Learn how to track task status, blockers, next actions, and review state.
-  </Card>
-</CardGroup>
+For tracked work, continue with [Create and review your first task](/user-guide/first-task). For a short direct request, describe the desired output and review the result in chat.

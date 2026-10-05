@@ -1,0 +1,49 @@
+---
+title: "Google Drive sync"
+description: "Connect Drive, select folders, synchronize, and interpret per-file and per-folder results."
+---
+
+# Google Drive sync
+
+Google Drive sync connects selected WS Files folders to the workspace's supported Drive synchronization workflow. Availability depends on the workspace plan, configuration, and your permissions.
+
+## Connect and choose folders
+
+1. Open **Files** and the **Google Drive** control.
+2. Connect the intended Google account through the offered authorization flow.
+3. Review the connected account and current status.
+4. Select folders in the explorer.
+5. Choose **Add folders to Sync**.
+6. Review **Folders configured for Drive**, then choose **Sync** or **Sync now**.
+
+Selection must include folders; selecting files alone does not add a sync scope. An already-selected parent covers its child folders. Wait for a running sync before changing its scope.
+
+The first merge for a new scope uploads WS-only files and downloads Drive-only files. Review the intended folders before starting, especially when both sides already contain work.
+
+## Read status carefully
+
+| State | Meaning |
+| --- | --- |
+| **Not configured** | The folder is outside the saved sync scope. |
+| **Ready** | In scope and ready for the next sync. |
+| **Queued / Syncing** | Waiting for a worker or running. |
+| **Paused** | Saved configuration remains, but sync is paused. |
+| **Reconnect required** | The Google authorization needs renewal. |
+| **Needs attention / Error** | Inspect details and resolve the reported issue. |
+| **Synced** | A reported result exists for the last run. |
+
+## Inspect Sync Details
+
+Open **Sync Details** or **Show more**. Check the last run, **Needs attention**, **Synced successfully**, affected paths, and error guidance.
+
+Results can be bounded or partial. A successful folder result does not prove every file has a successful individual result. “In sync scope — no item result reported” should not be read as proof of a completed file transfer.
+
+Resolve conflicts by reviewing the affected copies and keeping the intended version. Permission, quota, rate-limit, network, and missing-path errors have different recovery steps; use the displayed guidance.
+
+A delete-safety stop means the workflow halted rather than forcing a large deletion. Review the affected scope before retrying.
+
+## Remove a scope or disconnect
+
+Removing a configured folder stops its synchronization and leaves its local and Drive files in place. **Disconnect** removes the connection through the supported control. Neither action should be confused with deleting files from Files.
+
+After reconnecting or changing scope, check a fresh completed run for the intended paths.

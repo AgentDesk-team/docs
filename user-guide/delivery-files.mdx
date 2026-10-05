@@ -1,60 +1,52 @@
 ---
-title: "Delivery Files"
-description: "Browse and manage user-facing files produced by AgentDesk."
+title: "Files and deliveries"
+description: "Browse WS Files, organize inputs and outputs, preview files, and download results."
 ---
 
-# Delivery Files
+# Files and deliveries
 
-Delivery Files is where user-facing outputs should live. Examples include docs, forms, reports, exported HTML, PDFs, images, and downloadable packages.
+Open **Files** to browse the workspace's **WS Files** area. This includes project folders, task inputs, working files, proofs, deliveries, and source material you are allowed to access.
 
-## What you can do
+The Files explorer and the workspace panel serve different needs: Files is useful for broad folder management, while the panel opens a specific file beside chat.
 
-| Action | Description |
+## Find and open files
+
+Navigate folders with the tree and breadcrumbs, search or filter files, and use **Go to path** for an exact workspace path. Select a file to preview or open it in the appropriate panel. Use its path and ownership information to confirm that it belongs to the intended project or task.
+
+Common previews include text/source, Markdown, images, and supported document or spreadsheet formats. Preview support varies by file type; download a file when an in-app preview is unavailable.
+
+## Manage files
+
+| Action | Use |
 | --- | --- |
-| Browse | Navigate folders and files inside your delivery root. |
-| Preview | Read supported files without editing them. |
-| Upload | Upload files into the current folder. |
-| Create folder | Organize outputs. |
-| Rename | Rename files or folders. |
-| Move / copy | Reorganize files safely inside the delivery root. |
-| Delete | Remove files or folders with confirmation. |
-| Download | Download files or folder archives. |
+| **Upload** | Add input material or outputs to the current folder. |
+| **Create folder** | Organize related material. |
+| **Rename** | Change an item name inside its current location. |
+| **Copy / cut and paste** | Copy or move selected items to another workspace folder. |
+| **Download** | Download files or supported folder/selection archives. |
+| **Delete** | Confirm removal of selected files or folders. |
 
-## Navigation helpers
+Where offered, replacement on a name conflict is an explicit option. Leave it off when you want the operation to fail rather than overwrite an existing item.
 
-Delivery Files may include helpers that make larger workspaces easier to review:
+Deleting a folder removes its contents. Review the selected paths and confirmation before proceeding. Removing a Task Detail attachment or a Drive sync folder is a separate action and does not itself delete that file.
 
-- folder breadcrumbs,
-- path-based navigation,
-- search,
-- sorting,
-- file metadata such as modified time.
+## Edit supported content
 
-These are there to help you find the right output faster, especially when a workspace has many generated files.
+A supported text or source file can open with **Source** or **Edit** controls in the workspace panel. Review the exact path, make the change, save it, and confirm the saved result. Closing a dirty file can prompt you to discard unsaved changes.
 
-## Downloading multiple files
+This does not mean every binary document is editable in the preview. Use the format's supported editor or download it where appropriate.
 
-If you need several outputs at once, Delivery Files may let you download a selected set as a single archive instead of opening each file one by one.
+Read-only roles can view and download allowed files but cannot change them.
 
-This is useful for:
+## Keep inputs, proof, and outputs organized
 
-- review handoff,
-- client delivery,
-- packaging several related outputs together.
+Use the task's **Task Files**, **Proofs**, and **Deliveries** folders for its corresponding material. Use the project's Working-files area for scratch work. If work has no tracked task, use an appropriate Working-files location rather than inventing a task association.
 
-## Safety boundary
+A file existing somewhere in WS Files does not automatically make it an official task delivery. Attach or reference it through the task's supported flow.
 
-Delivery Files should only operate inside your workspace delivery folder. It should not expose host machine paths or allow navigation outside the delivery root.
+## Continue with related features
 
-## Read-only preview
-
-Current Delivery Files preview is read-only. Editing file contents is not part of the current product scope.
-
-## Artifacts vs deliveries
-
-| Type | Use for |
-| --- | --- |
-| **Artifacts** | Working proof, test results, screenshots, internal evidence. |
-| **Deliveries** | Final user-facing outputs. |
-
-If a file is meant for the user to download or review as an output, it should be in Delivery Files.
+- [Google Drive sync](/user-guide/google-drive-sync) synchronizes selected folders.
+- [Publish apps](/user-guide/publish-apps) publishes supported static application folders.
+- [Preview and review](/user-guide/preview-review) explains visual feedback.
+- [Git and terminal](/user-guide/git-terminal) covers source work in an intended project folder.

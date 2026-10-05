@@ -1,230 +1,78 @@
 ---
-title: "What a best-practice task looks like"
-description: "See what a well-defined AgentDesk task should look like after you work with an Agent Product Owner to clarify it."
+title: "Write a clear task"
+description: "Turn an initial request into a bounded outcome with reviewable acceptance criteria."
 ---
 
-# What a best-practice task looks like
+# Write a clear task
 
-You do not need to write a perfect task brief by yourself.
+Start in ordinary language. A Product Owner or suitable agent can help turn an idea into a brief; you do not need to write every detail before asking.
 
-In AgentDesk, the recommended flow is to start with a rough request, then work with an **Agent Product Owner** to analyze, clarify, define, and plan the task before execution.
+## Include the information that changes execution
 
-The goal of this page is to show what a task should look like **after** that conversation is complete.
-
-## The user does not need to know everything upfront
-
-A rough request is enough to start:
-
-```text
-Create a task for improving the new-user onboarding flow.
-```
-
-The Agent Product Owner should help turn that into:
-
-- a clear goal,
-- scope and out-of-scope,
-- assumptions and open questions,
-- expected output,
-- acceptance criteria,
-- verification plan,
-- suggested executor/owner,
-- next action.
-
-<Note>
-Your job is to provide business context, priorities, examples, and decisions. The Agent Product Owner's job is to shape that into executable work.
-</Note>
-
-## What a best-practice task contains
-
-A well-defined task usually has these parts:
-
-| Section | What it answers |
+| Part | What it explains |
 | --- | --- |
-| **Title** | What is this task about? |
-| **Goal** | What user/business outcome should change? |
-| **Context** | Why are we doing this now? What prior task, issue, user feedback, or decision matters? |
-| **Scope** | What should be included? |
-| **Out of scope** | What should not be touched in this task? |
-| **Expected output** | What should be delivered? UI change, docs page, report, API, proof pack, etc. |
-| **Acceptance criteria** | How will we know the task is good enough? |
-| **Verification plan** | What proof is required before marking it done? |
-| **Owner / executor** | Who should do the work? |
-| **Next action** | What is the next concrete step? |
+| **Title and goal** | The outcome you want. |
+| **Context** | Why the work matters and which project, source, or earlier decision applies. |
+| **Scope** | What is included. |
+| **Out of scope** | Changes the executor should avoid. |
+| **Expected output** | The document, application, analysis, code change, or other result. |
+| **Acceptance criteria** | Observable conditions for success. |
+| **Verification** | How each important condition will be checked. |
+| **Responsibility** | Owner and intended assignee. |
+| **Dependencies and next action** | What must happen first and what happens next. |
 
-## Example: from rough request to clear task
-
-### User starts with
+## Example brief
 
 ```text
-Create a task for improving the new-user onboarding flow.
-```
+Title: Create a customer onboarding guide
 
-This is okay as a starting point. The Agent Product Owner should not expect the user to provide a full spec immediately.
+Goal: Help new customers complete their first project without assistance.
 
-### Agent Product Owner asks clarifying questions
-
-Good questions are specific and decision-oriented:
-
-```text
-I can create a task for improving the new-user onboarding flow. Before it is ready for execution, I need to clarify a few points:
-
-1. What user or business outcome should this improve?
-2. What final output do you expect: UI change, docs, report, automation, or test proof?
-3. Is anything clearly out of scope?
-4. Who should review or approve the result?
-5. What proof is required: screenshot, Playwright UI E2E, test, build, or live verification?
-```
-
-### User gives context
-
-```text
-The goal is to help new users understand how to create clearer tasks for agents.
-The output should be a User Guide docs page.
-No product code changes are needed.
-Proof should be the published page on docs.agentdesk.team plus a commit hash.
-```
-
-### Agent Product Owner turns it into a defined task
-
-```text
-Title:
-Add User Guide page for creating clear AgentDesk tasks.
-
-Goal:
-Help new users understand how to work with an Agent Product Owner to turn a rough request into a clear, executable task.
-
-Context:
-Current docs mention task creation, but users may think they must define every detail themselves. In the current product, tasks are created through chat with an agent, preferably the Agent Product Owner.
+Context: Use the attached current UI screenshots and product notes.
 
 Scope:
-- Explain that users can start with a rough request.
-- Explain how to collaborate with Agent Product Owner to clarify the task.
-- Show what a well-defined task looks like after clarification.
-- Add examples and review checklist.
-- Publish to AgentDesk public docs.
+- Explain sign-in, project creation, first task, and output review.
+- Include examples and links to the current product.
 
 Out of scope:
-- Do not document direct board task creation as supported.
-- Do not change product code.
-- Do not require users to write full specs themselves.
+- Product code changes.
+- Sending the guide to customers.
 
-Expected output:
-A User Guide docs page in the public AgentDesk docs site.
+Output:
+- HTML guide and downloadable PDF in this task's Deliveries.
 
-Acceptance criteria:
-- Page clearly recommends Agent Product Owner for task shaping.
-- Page shows before/after examples.
-- Page describes the final shape of a good task.
-- Navigation includes the page.
-- docs.json remains valid.
+Acceptance:
+- Every step matches the current UI.
+- Links resolve.
+- PDF is readable on A4 with no clipped text.
+- Review proof identifies the source screenshots and checked files.
 
-Verification plan:
-- Validate docs.json.
-- Run Mintlify validation if available.
-- Push to the canonical docs repo.
-- Provide commit hash and expected public URL.
-
-Owner / executor:
-Docs/Product agent.
+Verification:
+- Validate links, render the PDF, and inspect each page.
 
 Next action:
-Draft the docs page, update navigation, validate, commit, and push.
+- Draft the guide in Inbox for review before execution approval.
 ```
 
-## How to interact with the Agent Product Owner
+## Make criteria testable
 
-Use normal language. You can be rough at first.
+“Easy to use” is difficult to verify. Prefer “A new user can locate Add work item, create an Inbox item, and open its Task Detail using the documented steps.”
 
-Good starting prompts:
+For UI work, identify the behavior and intended environment. For reports, identify source data and method. For documents, identify format, audience, links, and layout checks.
+
+## Use the right structure
+
+Use a checklist for checkpoints within the same task. Use a dependency for a prerequisite task. Use a separately assigned child or related task for work that needs its own responsibility and lifecycle.
+
+An attachment supplies context; it is not a dependency. A mention in a comment is communication; it is not an assignment.
+
+## Approve after review
+
+After the task exists and the brief is adequate, give a later task-specific approval, for example:
 
 ```text
-Create a task for improving the new-user onboarding flow.
+I approve TASK-ID's scope and acceptance criteria.
+Assign it to the documentation agent and move it to Ready.
 ```
 
-```text
-Please analyze this request, write a clear spec/task, and keep it in Inbox for my review.
-```
-
-```text
-I want to build this feature. Ask me the key questions needed to define it, then create a task for the team.
-```
-
-```text
-Create a task for this bug. Do not assign it to engineering yet; analyze the cause and scope first.
-```
-
-```text
-Create this task and, if it is clear enough, recommend the right agent to execute it.
-```
-
-## What the Agent Product Owner should do
-
-A good Agent Product Owner should:
-
-- restate the goal in plain language,
-- identify missing decisions,
-- ask only questions that change execution quality,
-- define scope and out-of-scope,
-- suggest acceptance criteria,
-- suggest verification proof,
-- keep the task in **Inbox** until approved,
-- recommend the right executor,
-- warn if the task is too broad or risky.
-
-<Warning>
-If the request is vague, the agent should not silently invent important requirements and move it straight to execution. It should clarify or create a draft task/spec for review.
-</Warning>
-
-## What the user should review before approving
-
-Before you tell the agent to move a task to Ready, check:
-
-- Does the title match what you asked for?
-- Does the goal describe the user/business outcome?
-- Is scope clear enough?
-- Is out-of-scope stated?
-- Is the expected output concrete?
-- Are acceptance criteria testable?
-- Is verification/proof explicit?
-- Is the recommended executor correct?
-- Is the next action specific?
-
-If something is missing, ask the Agent Product Owner to refine it.
-
-## Good approval prompts
-
-When the task looks good:
-
-```text
-Looks good. Move this task to Ready and assign it to Nam.
-```
-
-```text
-The spec looks good. Assign it to Duy and require Playwright screenshot proof before marking it done.
-```
-
-```text
-Keep this task in Inbox. I need to review the scope further.
-```
-
-## Signs a task is not ready yet
-
-Keep the task in Inbox if:
-
-- the outcome is unclear,
-- the task mixes too many unrelated things,
-- expected output is not defined,
-- acceptance criteria are subjective,
-- no verification method is named,
-- the executor is unclear,
-- the work may affect security, auth, public docs, external messages, billing, or user data without review.
-
-## Final mental model
-
-You provide intent and decisions.
-
-The Agent Product Owner turns that intent into a clear task.
-
-The executor agent delivers the task.
-
-You review the output and proof before closing it.
+If decisions are still open, keep it in Inbox and say what must be clarified. See [Create and review your first task](/user-guide/first-task).

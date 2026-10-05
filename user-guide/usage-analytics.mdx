@@ -1,0 +1,48 @@
+---
+title: "Usage and analytics"
+description: "Read token totals, cost reporting, provider allowance, and workspace or project analytics."
+---
+
+# Usage and analytics
+
+## Workspace Usage
+
+Open **Usage** and select 24 hours, 7 days, 30 days, or a custom date range. Custom dates use UTC and include the end date. Choose **Refresh** to load current data.
+
+Review total tokens, input/output, cache read, the daily trend, and breakdowns **By agent** and **By task**. Unattributed events can appear when the platform cannot associate them with a named agent or task.
+
+## Actual and estimated cost
+
+| Value | Meaning |
+| --- | --- |
+| **Actual cost** | Cost reported by the provider. |
+| **Shadow cost estimate** | An estimate based on the available versioned pricing catalog. |
+| **Not reported** | The required provider or pricing information is absent. |
+
+Missing actual cost is not $0.00. An estimate is not an invoice. Cost details require billing access even when token totals and allowance are visible.
+
+Cache-read tokens are shown separately where the provider reports them. Read the chart and reconciliation labels rather than adding unrelated counters together.
+
+## Provider allowance
+
+**Provider quota status** reports allowance snapshots, remaining percentage, and reset times for reported provider lanes.
+
+Allowance is an operational limit, not actual billed cost. A missing or temporarily unavailable quota snapshot does not erase token usage. If a reset time is absent, do not infer one from another provider's window.
+
+## Freshness and empty states
+
+A stale-data notice means the latest metering collection failed while earlier totals remain visible. If no usage appears, check the date range and permissions.
+
+Telemetry may be unavailable for a particular breakdown. “Not reported” and “Pending” are limitations, not proof that nobody used the workspace.
+
+## Workspace Analytics
+
+**Analytics** presents the current billing-period workspace usage and participation data: members, active users, reported usage events, and available user/agent credit breakdowns.
+
+Some credit charts remain unavailable until Gateway telemetry reports them. Token activity in Usage and credits in Analytics are different reporting surfaces.
+
+## Project analytics
+
+Open **Analytics** within Work Items, or Insights in a project overview, for task totals, created/resolved trends, status distribution, and assignee workload. Those results follow the selected project and current view filters.
+
+For subscription and payment controls, see [Billing and plans](/user-guide/billing-plans).

@@ -1,30 +1,66 @@
 ---
 title: "FAQ"
-description: "Frequently asked questions about AgentDesk."
+description: "Quick answers about AgentDesk projects, chat, tasks, files, privacy, and availability."
 ---
 
 # FAQ
 
-## Is AgentDesk just a chatbot?
+## Must every chat request become a task?
 
-No. AgentDesk includes chat, but the product is a workspace with tasks, agents, files, runtime state, and delivery outputs.
+No. Direct conversation can handle a request. Ask explicitly for a tracked Work Item when you need assignment, lifecycle, dependencies, and official proof.
 
-## Can I create work directly from chat?
+## Can I create a task directly in Projects?
 
-Yes. A chat request can become a normal dashboard task. New tasks usually start in Inbox unless execution is explicitly approved.
+Yes. Use **Add work item**, **Add intake item**, or ask an agent to create it. New work starts in Inbox; creation does not authorize execution.
 
-## Can multiple agents work at the same time?
+## Is Ready an execution approval?
 
-Yes, but each agent should have at most one active assignment at a time.
+Ready means approved and eligible to start. It can make an agent eligible for automatic dispatch. Review the brief and assignee before moving work there.
 
-## Where should final outputs go?
+## Can I change a session's project after starting?
 
-Final user-facing outputs should go into Delivery Files. Internal proof and test evidence should go into artifacts.
+Use a new session for another project. Project filters and context references do not rebind an existing conversation.
 
-## Can I edit files in Delivery Files?
+## Are shared conversations public?
 
-Current scope supports read-only preview and file management operations. Editing file contents is not currently included.
+No. Workspace visibility is subject to account and role access. It does not publish a conversation on the internet or transfer ownership.
 
-## What should I do when a task is blocked?
+## Can I change a shared conversation to private later?
 
-Read the blocker and next action. A good blocker should explain what is missing and what you can do to unblock it.
+No. Choose private mode before sending the first message in a new session. Visibility locks once sending starts.
+
+## Can a task have multiple assignees?
+
+The current Task Detail supports one assignee. Use separate tasks with their own responsibility when work needs separate executors.
+
+## Can I edit files?
+
+Supported text/source files can be edited in the workspace panel with permission. Binary document preview does not imply editing support for that format.
+
+## Where are results and proof?
+
+Use the task's Deliveries for final results, Proofs for verification, and Task Files for inputs and briefs. Files browses their folders.
+
+## Is Live Preview the same as Publish app?
+
+No. Preview is for running and reviewing a project. Share preview can provide an expiring review link. Publish app creates a public static release and URL.
+
+## Does connecting ChatGPT change my AgentDesk plan?
+
+No. Model-provider access, provider allowance, and the AgentDesk workspace subscription are separate.
+
+## Does missing cost mean my usage is free?
+
+No. “Not reported” means billing information is unavailable. A shadow estimate is not a provider invoice.
+
+## Why is a feature or button missing?
+
+Check your plan, role, connection, runtime capability, and deployed release. Some surfaces are gated or read-only.
+
+## Where are the skill, Wiki, and Desktop manuals?
+
+This guide currently provides a [high-level orientation](/user-guide/skills-wiki-desktop). Detailed procedures are deferred while those workflows change.
+
+## Does the new UI have the old Telegram bind button?
+
+The current React UI does not expose that legacy dialog. See [Telegram integration status](/user-guide/telegram-bind).

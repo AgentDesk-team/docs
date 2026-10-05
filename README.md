@@ -1,29 +1,35 @@
 # AgentDesk Docs
 
-Mintlify-ready documentation source for AgentDesk user onboarding, user guide, and team/developer context.
+User documentation published at https://docs.agentdesk.team from the canonical
+GitHub repository https://github.com/AgentDesk-team/docs.
 
-## Local preview
+## Maintain
+
+For AgentDesk documentation work, inspect the current React frontend and
+capability contracts in the Huy staging Linux devbox. Edit and validate the
+docs in an owned branch under the workspace's Working-files area. Preserve
+existing public page URLs when replacing outdated instructions.
+
+Keep user-facing instructions distinct from implementation evidence. Put
+private source audits and verification reports outside this publication tree.
+Internal historical references remain excluded by .mintignore.
+
+## Preview and validate
+
+Use an LTS Node version supported by the Mintlify CLI:
 
 ```bash
 mint dev
-```
-
-## Validate
-
-```bash
 mint validate
+mint broken-links
 ```
 
-## Publish model
+## Publish
 
-Recommended flow:
+Publish the reviewed commit through the canonical GitHub repository's configured
+Mintlify branch. Verify the live index, navigation, and changed pages after
+deployment. A local validation or Git push alone does not prove publication.
 
-1. Maintain docs in this local repo.
-2. Push to a private GitHub repo, e.g. `agentdesk-docs`.
-3. Connect the GitHub repo to Mintlify.
-4. Mintlify deploys from the configured branch.
-
-## Canonical AgentDesk snapshots
-
-- Product Spec snapshot: `/Users/huyvtq/.agentdesk/workspaces/huy/deliveries/agentdesk-current-product-spec-2026-05-07.html`
-- System Design snapshot: `/Users/huyvtq/.agentdesk/workspaces/huy/deliveries/agentdesk-current-system-design-2026-05-07.html`
+The 2026-10-05 guide covers the current React UI and keeps skill management,
+Wiki, and Desktop at a high level. Features remain subject to deployment,
+plan, role, connection, and runtime availability.

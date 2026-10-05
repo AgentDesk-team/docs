@@ -1,0 +1,49 @@
+---
+title: "Git and terminal"
+description: "Review changes and commits, use permitted Git actions, and run commands in the workspace runtime."
+---
+
+# Git and terminal
+
+The workspace panel provides source-oriented tools for a selected project folder. Confirm the intended folder before reading changes or executing actions.
+
+## Connect the intended folder
+
+Use **Add project folder** when a folder is not yet available in the panel. Choose a relative folder inside the workspace. This panel selection scopes Files and Git actions; it is distinct from rebinding an existing chat session to another AgentDesk Project.
+
+A folder must already be a Git repository for Git review to work. Adding a folder does not automatically initialize Git or clone a remote repository.
+
+## Review source changes
+
+Open **Changes** to select modified files and inspect their diffs. Use **Commits** and available review-version controls to inspect history. Check the branch and repository before staging or committing.
+
+Use file previews or Source to examine content. If an editor is configured, **Open in VSCode** opens that editor; a workspace without an editor reports the unavailable capability.
+
+## Git actions
+
+| Action | What to review |
+| --- | --- |
+| **Stage / Unstage** | Which files belong in the next commit. |
+| **Commit** | Staged files and a meaningful message. |
+| **Pull** | The intended remote and branch; the panel uses fast-forward-only pull. |
+| **Push** | The intended remote and branch; the panel does not force-push. |
+| **Create New Branch / Switch branch** | Current work, repository ownership, and target branch. |
+| **Create PR** | Target branch, title, description, and the supported provider connection. |
+
+Confirm the operation in its dialog. Commit includes staged files only. Provider authentication, branch protection, workspace permissions, and any project instructions continue to apply.
+
+If an action fails because the runtime, credentials, or branch state is unavailable, resolve that cause before retrying.
+
+## Terminal
+
+Open **Terminal**, enter the intended command, and use **Run**. Output appears in the terminal surface; use the offered Stop or close controls for your session.
+
+Commands run in the configured workspace runtime and can modify files or access the network. Terminal mutation controls require authorized workspace access. Confirm the working directory and command purpose before running.
+
+An unavailable runtime or read-only role can prevent execution even when file preview works.
+
+## Development environments
+
+When **Environments** is available, it shows task/worktree/branch ownership, ports, deployments, capacity, and waiting work. This is a read-only inspection surface, and it can remain gated until registry accuracy is authoritative.
+
+For tracked development, keep the source branch, tests, delivery, and task proof associated with the correct project and task. A source commit alone does not establish that a deployed application has changed.

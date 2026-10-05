@@ -1,40 +1,74 @@
 ---
 title: "Troubleshooting"
-description: "Common AgentDesk issues and what to check first."
+description: "Resolve onboarding, chat, task, file, provider, quota, and publishing problems."
 ---
 
 # Troubleshooting
 
-## I do not see my workspace
+## Workspace setup is still running
 
-Check whether you have initialized your workspace. New normal users may need to use **Init Workspace** before opening the dashboard.
+Return to onboarding and read the current initialization status. Reloading should return to the saved step. Use the offered retry for a retryable failure. If it remains stuck, report the time, workspace identifier, and displayed error.
 
-## A task is not running
+## An agent or session is missing
 
-Possible reasons:
+Check the selected workspace, agent, project filter, visibility filter, paused-agent section, archive state, and your role. A shared session can be read-only; private sessions remain private.
 
-- The task is still in Inbox.
-- The task is waiting for approval or clarification.
-- The task is blocked.
-- A dependency is not done yet.
-- The intended agent is already active on another task.
-- The agent session is unavailable.
+If agent setup failed, use **Retry setup** when offered. Do not create multiple replacements before understanding the original setup result.
 
-Check the task status, next action, dependencies, and latest update.
+## Chat cannot start or send
 
-## The wrong agent replied
+Check workspace access and runtime readiness, then the selected agent and model connection. A read-only conversation cannot send. For a session/bootstrap error, use the displayed Retry and report a repeated failure.
 
-Check which agent is selected in the chat panel. If the wrong agent was selected, switch to the right one and include the task id or summary for context.
+Changing model settings can affect the next turn; it does not change a response already running.
 
-## A file is missing
+## I cannot make an existing session private
 
-Check whether the file is an artifact or a delivery:
+Visibility locks after sending begins. Create a new session and set **Private conversation** before its first message. Do not assume hiding a session from your own sidebar changes its access.
 
-- Working proof usually belongs under artifacts.
-- User-facing output belongs under delivery files.
+## A task does not run
 
-If an attachment was only sent in chat, ask the agent to attach or copy it into the correct task/delivery location.
+Open Task Detail and check status, assignee, dependencies, current execution, and recorded reason.
 
-## The UI says work is done, but I am not sure
+Inbox has not been approved. Ready is eligible rather than guaranteed to have started. Waiting needs input or a prerequisite; Blocked needs an obstacle fixed. A busy executor, provider allowance, plan restriction, or unavailable runtime can also prevent execution.
 
-Ask for evidence. Good evidence may be a screenshot, test output, delivery file, or clear verification note.
+## A status or assignment change is rejected
+
+Read the reported reason. Assign an executor before starting, choose an allowed transition, and do not reassign an active run as if it were idle. Reload current task truth if someone else changed the record.
+
+## The task says Done but the result is unclear
+
+Inspect Deliveries, Proofs, and acceptance criteria. A chat response or completed checklist is insufficient. Reopen permitted Done work if changes are required and state the failing criterion.
+
+## A file link is missing or inaccessible
+
+Open the task or Files explorer and verify the exact path and current access. Ask for the correct attachment if it was never linked. A removed attachment reference, deleted file, moved file, and denied permission need different fixes.
+
+For a Files connection error, use its Retry. A stale listing should be refreshed before destructive actions.
+
+## A model is unavailable
+
+Open Model Providers, inspect the connection and model-policy state, and reconnect an expired provider where permitted. Check that defaults and agent/session overrides select an available model.
+
+If a policy is Applying or Drift, inspect its result. If a save was not verified, the previous valid selection can remain active.
+
+## Usage shows no cost or missing telemetry
+
+“Not reported” is not zero cost. Check the date range, billing-read permissions, provider-reported cost, and telemetry freshness. Provider allowance is separate from billed cost.
+
+## Billing or quota blocks an action
+
+Use Billing, View plans, or Recover billing. Wait for provider confirmation and refreshed entitlement. Review current seat/project/agent limits before retrying a preserved form.
+
+## Google Drive needs attention
+
+Open Sync Details, inspect failed or skipped paths, and follow the specific guidance for reconnect, permission, quota, network, conflict, or delete-safety errors. A folder result may not contain proof for every file.
+
+## Live Preview or publishing fails
+
+For preview, inspect the startup issue for the intended project. For static publishing, check root index.html, supported source content, valid app ID, permissions, and the exact returned status.
+
+A working preview does not prove publication. Verify the returned public URL after Publish app.
+
+## Report an issue
+
+Include the affected area, time, workspace/project/task identifier where appropriate, expected behavior, observed behavior, and a redacted error or screenshot. Exclude credentials, cookies, bot tokens, and private content unrelated to the issue.
