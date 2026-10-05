@@ -1,0 +1,81 @@
+---
+title: "Agent skills"
+description: "Manage an agent's own skills, workspace inheritance, and editable overrides."
+---
+
+Use an agent's skill browser when a capability should belong to that agent or when you need to understand which workspace skills it inherits.
+
+## Open from the agent menu
+
+1. Open **Agent Chat** and locate the agent under **Agents**.
+2. Open the action menu beside its name, where **Edit profile** is also available.
+3. Choose **Manage skills**.
+4. Check the title **Manage skills · [agent name]** before making a change.
+
+Manage skills is a separate action beside Edit profile; skill assignments are not fields in the profile form. The workspace browser is opened through [Workspace Settings → Workspace Skills](/user-guide/workspace-skills).
+
+An active agent offers this management menu. A paused agent's menu offers profile viewing and resume actions; resume it when you intend to make it available for work.
+
+## Understand the scope
+
+**Installed Skills** contains both the agent's own skills and skills inherited from the workspace. **All Skills** is the shared workspace catalog; installing from this agent's browser gives the skill to this agent only.
+
+| Badge | Meaning |
+| --- | --- |
+| **Installed for [agent]** | The agent has its own installed copy. |
+| **From workspace** | The agent inherits the workspace installation. |
+| **Overrides workspace** | The agent's own copy takes precedence over the workspace copy. |
+| **AgentDesk managed** | Managed instructions that cannot be edited directly. |
+| **User managed** | A skill whose installed text files can be customized when you have permission. |
+
+Use the same search, role filter (**For**), source filter (**From**), and description expansion as Workspace Skills.
+
+## Install or remove an agent's own skill
+
+1. Open **All Skills**.
+2. Inspect an available skill and choose **Install**.
+3. Wait for confirmation, then check **Installed Skills** for **Installed for [agent]**.
+
+To remove an own installation, choose **Remove**, review the agent name in the confirmation, and confirm.
+
+A skill marked **From workspace** has no per-agent Remove action in this browser. Manage the shared installation in Workspace Skills. Removing an own override can expose the workspace copy again if the skill remains installed there.
+
+## Customize a skill for one agent
+
+Open **Edit** on an installed User managed skill. The editor explains which copy you are changing:
+
+- If the agent already has its own copy, saving updates that copy.
+- If the agent inherits the workspace copy, saving creates an own copy with the same name for this agent. Other agents continue using the workspace version.
+
+Select a file, edit it, and choose **Save**. Save each changed file separately. Check for the saved confirmation and **Overrides workspace** badge when a workspace installation also exists.
+
+**Reset**, when available, restores the selected editable file from the catalog version. It does not remove the agent's override or restore the latest workspace customization. To return to workspace inheritance, remove the agent's own installation and check that **From workspace** appears.
+
+For AgentDesk managed skills, open **View → Clone to edit**. **Clone only** creates an editable catalog copy for later installation. **Clone and use here** uses the editable clone for this agent in place of the original in this scope. Review the resulting agent list, especially when the original also exists at workspace scope.
+
+The catalog version remains read-only in the file editor. Keep the SKILL.md name unchanged. If the file changed while you were editing, use **Reload file** and reapply your intended edit to the current version.
+
+## New and imported skills
+
+**New skill** and **Import skill** appear in **All Skills** for users with skill management permission. They use the same catalog and validation workflow as Workspace Skills.
+
+Creating a skill adds it to the catalog; then choose where to install it. Import supports public GitHub repositories and .skill/.zip uploads, with preview, candidate selection, and duplicate handling. See [Create and import skills](/user-guide/workspace-skills#create-a-skill).
+
+After creating or importing, check this agent's **Installed Skills** and the installation badge. Sharing a catalog does not mean every catalog item is installed on every agent.
+
+## Missing files
+
+When the agent has assignments whose files are missing, a **Missing files** tab appears.
+
+1. Open the tab and inspect **Skill file missing** entries.
+2. Restore the missing skill files through the appropriate workspace or skill maintenance workflow, then choose **Reload Skills**.
+3. If the assignment is no longer needed, choose **Remove** and confirm for that agent.
+4. Return to **Installed Skills** and check the result.
+
+Installing or listing a skill cannot replace a missing external credential or grant additional tool access. If the files are present but the agent still cannot perform the action, check the relevant integration, permissions, model connection, and the agent's reported error.
+
+## Permissions and related settings
+
+Users without skill management permission can view the browser but cannot change installations or files. Ask a workspace admin for the required change.
+
+Skills provide reusable procedures. [Agent Context](/user-guide/agent-context) shapes the agent's behavior and persistent instructions. [Edit profile](/user-guide/agent-management#edit-the-profile) changes its display name and avatar; model settings are described in [Model providers](/user-guide/model-providers).

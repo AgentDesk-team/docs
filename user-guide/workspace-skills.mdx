@@ -1,0 +1,117 @@
+---
+title: "Workspace Skills"
+description: "Browse, install, import, and customize skills for the whole workspace."
+---
+
+A skill is a reusable set of instructions and supporting files. Install it for the workspace when every agent should have it, including agents created later. Use [Agent skills](/user-guide/agent-skills) for an individual agent.
+
+## Open Workspace Skills
+
+Open **Workspace Settings → Workspace Skills**. Depending on the navigation layout, the workspace Skills entry opens the same browser.
+
+You need permission to manage skills to install, remove, create, import, or edit them. With view-only access, you can inspect skills and ask a workspace admin to make changes. A skill does not provide an external account, credential, tool permission, or model connection by itself.
+
+## Find a skill
+
+The browser has two main tabs:
+
+| Tab | What it shows |
+| --- | --- |
+| **Installed Skills** | Skills installed for the whole workspace. |
+| **All Skills** | The workspace catalog, including skills that are available but not installed here. |
+
+Search by name or description. Use **For** to filter by role or built-in skills, and **From** to filter by **AgentDesk managed** or **User managed**. Clear the search or choose **Everyone** and **Any source** to broaden the results. Expand long descriptions with **Show more**.
+
+**AgentDesk managed** skills stay in sync with AgentDesk. **User managed** skills can have editable installed copies. **Needs attention** means the skill is not currently usable; review its files or reported issue before trying to install it.
+
+## Install for everyone
+
+1. Open **All Skills** and find the skill.
+2. Read its description and choose **View** to inspect its files if needed.
+3. Choose **Install**.
+4. Wait for confirmation, then check **Installed Skills** for the **Installed** badge.
+
+Every agent inherits a workspace installation. You do not need to install it separately on each agent.
+
+## Edit an installed skill
+
+For an installed **User managed** skill, choose **Edit** or open its name.
+
+1. Select a file tab, usually starting with **SKILL.md**. Use the editor's Markdown preview to review the rendered instructions.
+2. Read the scope hint: this is the workspace copy.
+3. Change the text and choose **Save** for the selected file.
+4. Wait for the saved confirmation. Save each changed file separately before closing.
+
+The editor shows text files that can be displayed. Each file's availability and editability determine whether it can be changed. Keep the skill's name in the SKILL.md frontmatter unchanged; changing the instructions or description does not rename the skill.
+
+Workspace edits affect agents that use the workspace copy. An agent's own override remains separate. Use [Agent skills](/user-guide/agent-skills#customize-a-skill-for-one-agent) when a change should affect only one agent.
+
+**Reset**, when available, replaces the selected file with its catalog version. Review the confirmation before proceeding. It restores the catalog baseline, rather than a previous saved edit. The catalog itself is read-only in this file editor.
+
+If another change happened since you opened the file, the editor reports a conflict. Keep a copy of your intended edits, use **Reload file**, compare the current content, and apply the change again. Closing with unsaved changes offers **Keep editing** or **Discard**.
+
+## Customize an AgentDesk managed skill
+
+AgentDesk managed files are read-only. Open the skill and choose **Clone to edit**:
+
+- **Clone only** creates an editable User managed skill in the catalog. Install the new skill where you want to use it.
+- **Clone and use here** creates the editable copy and uses it in this workspace scope in place of the original. The original remains in the catalog.
+
+Confirm the choice, then open the editable installed copy. Check the workspace and affected agent skill lists to understand which copy they use.
+
+## Create a skill
+
+1. In **All Skills**, choose **New skill**.
+2. Fill in the SKILL.md template. Give it a unique name and a description that explains what it does and when to use it.
+3. Write clear instructions, inputs, steps, and expected output.
+4. Choose **Create skill** and wait for confirmation.
+5. Find it in **All Skills**, then install it for the workspace or a particular agent.
+
+For example:
+
+```markdown
+---
+name: weekly-summary
+description: Summarize a week's project updates into decisions, progress, and next steps.
+---
+
+# Weekly summary
+
+Use the project updates supplied by the user.
+Group the result into progress, decisions, blockers, and next steps.
+Link the source material and flag missing information.
+```
+
+Creating a catalog entry and choosing where agents use it are separate steps.
+
+## Import skills
+
+In **All Skills**, choose **Import skill**. The same importer is available from an agent's skill browser.
+
+1. Choose **GitHub repository** and enter a **Public GitHub repository URL**, or choose **Archive upload** and select a **.skill** or **.zip** file.
+2. Choose **Preview**. Review detected candidates, validation errors, and warnings.
+3. Select the valid candidates you want. Invalid or unavailable candidates cannot be selected.
+4. Review **Duplicate behavior** before choosing **Install selected**.
+5. Wait for the server-confirmed result. Return to **All Skills**, then choose **Install** in the workspace or agent browser where you want to use it.
+
+The importer uses a public GitHub URL; it does not offer a private-repository token field. If SKILL.md is in a subfolder, use a GitHub URL pointing to that skill folder. The GitHub preview reads the detected SKILL.md; use an archive when you need to include supporting files. An upload must contain a valid skill structure, including SKILL.md.
+
+| Duplicate behavior | Intended outcome |
+| --- | --- |
+| **Fail safely** | Reject a conflicting active skill instead of replacing it. This is the default. |
+| **Replace active version** | Replace the conflicting active version with the selected candidate. |
+| **Archive existing, then install** | Archive the existing version and install the selected candidate. |
+
+Choose replacement only after reviewing the existing version and its users. A preview confirms what was detected; it does not confirm installation. **Install selected** imports candidates into the catalog. It does not choose a workspace or agent installation. Install the catalog entry in the intended browser, then inspect **Installed Skills** to confirm its scope.
+
+## Remove or archive
+
+Choose **Remove** on an installed workspace skill and confirm. This removes the workspace installation. Agents that rely on it lose that inherited copy; separately installed agent copies remain distinct.
+
+**Archive** is a catalog action offered for eligible User managed skills when you open the catalog version. Confirming hides the skill from the catalog and prevents new installations. It is different from removing an installation from one scope.
+
+## Refresh and resolve problems
+
+Use **Reload Skills** after files or installations change outside this browser. With management permission, this action also reconciles the catalog with installed skill files.
+
+If a skill cannot be installed, inspect **Needs attention**, clear filters, and review validation errors. If an agent reports **Missing files**, follow [Agent skills](/user-guide/agent-skills#missing-files). If a save fails, read the error and check your permission, file size, and whether the file changed while the editor was open.
