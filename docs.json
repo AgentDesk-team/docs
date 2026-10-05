@@ -29,6 +29,8 @@
               "user-guide/chat-panel",
               "user-guide/sessions-privacy",
               "user-guide/agent-management",
+              "user-guide/agent-skills",
+              "user-guide/agent-context",
               "user-guide/model-providers"
             ]
           },
@@ -55,6 +57,7 @@
             "group": "Workspace administration",
             "pages": [
               "user-guide/workspace-management",
+              "user-guide/workspace-skills",
               "user-guide/members-permissions",
               "user-guide/usage-analytics",
               "user-guide/billing-plans",

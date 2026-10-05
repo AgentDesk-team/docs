@@ -30,6 +30,6 @@ Publish the reviewed commit through the canonical GitHub repository's configured
 Mintlify branch. Verify the live index, navigation, and changed pages after
 deployment. A local validation or Git push alone does not prove publication.
 
-The 2026-10-05 guide covers the current React UI and keeps skill management,
-Wiki, and Desktop at a high level. Features remain subject to deployment,
+The 2026-10-05 guide covers the current React UI, including detailed workspace
+and agent skill management and Agent Context. Wiki and Desktop stay high-level. Features remain subject to deployment,
 plan, role, connection, and runtime availability.

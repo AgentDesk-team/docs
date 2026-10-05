@@ -1,0 +1,78 @@
+---
+title: "Agent Context"
+description: "Inspect, edit, and reset the files that shape an agent's behavior and memory."
+---
+
+Agent Context contains the agent's persistent instructions, identity, and memory. Use it for behavior that should follow the agent across work. Changes apply to its next runs; saving a context file does not rewrite an answer already produced.
+
+## Open Manage contexts
+
+1. Open **Agent Chat → Agents**.
+2. Open the action menu beside the active agent, where **Edit profile** is also available.
+3. Choose **Manage contexts**.
+4. Check **Manage contexts · [agent name]**, then select a file tab.
+
+This is a separate menu action beside Edit profile. Access to these context files requires agent management permission; view-only profile access does not imply access to the context editor.
+
+## Choose the right file
+
+| File | What belongs here |
+| --- | --- |
+| **AGENTS.md** | Durable working instructions: how the agent approaches tasks, checks results, and follows team conventions. |
+| **SOUL.md** | Personality, communication style, and behavioral principles. |
+| **IDENTITY.md** | The agent's identity and role description. Change its display name or avatar through Edit profile. |
+| **MEMORY.md** | Long-term knowledge and decisions the agent should retain. The agent also updates this file itself. |
+
+The editor exposes these four files. **TEAM.md** and **AGENTDESK.md** are managed by AgentDesk and are not listed for editing here.
+
+Context text guides behavior. It does not change the agent's fixed role template, grant permissions, connect a provider, or install a skill. Put shared project instructions in [PROJECT.md](/user-guide/projects), and reusable procedures in [skills](/user-guide/agent-skills).
+
+## Edit and save
+
+1. Read the current file before editing, particularly MEMORY.md.
+2. Make a focused change in the text editor.
+3. Choose **Save** for the selected file and wait for its saved confirmation.
+4. Save each changed file separately before closing the dialog.
+
+An unsaved-change indicator marks modified tabs. Switching tabs keeps those drafts in the dialog; saving one file does not save every tab. Closing with unsaved changes offers **Keep editing** or **Discard**.
+
+Files must be text and no larger than **256 KiB**. If a save fails, review the displayed error before retrying.
+
+For example, an AGENTS.md addition could say:
+
+```markdown
+When summarizing project progress:
+- Link the source updates.
+- Separate confirmed results from pending work.
+- End with blockers and the next action.
+```
+
+Keep instructions clear and consistent with the workspace's rules. Store credentials through the appropriate connection or secret workflow rather than in context text.
+
+## Handle a changed file
+
+A person or the agent may update a file while you have it open. Saving checks the version originally loaded and reports a conflict instead of silently overwriting a newer version.
+
+1. Keep a copy of the changes you intended to make.
+2. Choose **Reload file**.
+3. Compare the current content, including any agent-written memory.
+4. Apply only the change still needed and save again.
+
+Review unsaved drafts in other tabs before reloading the files.
+
+## Reset from a role template
+
+**Reset** restores the selected file from the agent's role template when a template is available.
+
+1. Select the file and choose **Reset**.
+2. Read the confirmation: the current contents will be replaced.
+3. Confirm and wait for the restored message.
+4. Read the restored content before the agent's next work.
+
+Reset is a template restore, rather than an undo history. If there is no template for the selected file, the control is unavailable.
+
+MEMORY.md has an empty memory baseline when the role does not provide one; resetting it can clear accumulated knowledge. IDENTITY.md is restored with the agent's current name and role. Resetting these files does not change the assigned role template.
+
+## Check the effect
+
+After saving, use the agent's next run to check the intended behavior. Give it a small request that exercises the instruction, then inspect its response and evidence. Context changes do not guarantee a task will succeed when required tools, permissions, or external connections are unavailable.
